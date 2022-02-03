@@ -3,13 +3,6 @@ import { useMoralis } from "react-moralis";
 import { NFTCardType } from "../types/nftCardType";
 
 const FetchNFTs = async (address: string, chain?: any) => {
-  //Moralis.start();
-
-  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
-  const appId = process.env.NEXT_PUBLIC_APP_ID;
-
-  Moralis.start({ serverUrl, appId });
-
   const options = {
     address: address,
     chain: chain,
