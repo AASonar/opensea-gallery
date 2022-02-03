@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Script from "next/script";
 import { NftCard } from "../components/ui";
+import AddressForm from "../components/ui/addressForm";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <AddressForm></AddressForm>
         <h1>Test NFT Collection</h1>
         <NftCard></NftCard>
       </main>

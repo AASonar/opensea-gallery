@@ -4,8 +4,5 @@ const nextConfig = {
 };
 
 module.exports = {
-  images: {
-    domains: ["ipfs"],
-  },
   nextConfig,
 };
