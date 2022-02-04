@@ -6,11 +6,13 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Grid } from "@mui/material";
+import { AddressContext } from "../contexts/AddressContext";
 
 export default function AddressForm() {
-  const [network, setNetwork] = useState("");
+  const { address, setAddress, network, setNetwork } =
+    useContext(AddressContext);
 
   const handleChange = (event: SelectChangeEvent) => {
     setNetwork(event.target.value);
@@ -20,14 +22,17 @@ export default function AddressForm() {
     <Grid container spacing={2}>
       <Grid xs={4}>
         <TextField
-          sx={{ width: "40ch" }}
+          // sx={{ width: "40ch" }}
           id="filled-basic"
           label="Wallet Address"
           variant="filled"
         />
       </Grid>
       <Grid xs={2}>
-        <FormControl variant="filled" sx={{ minWidth: 120 }}>
+        <FormControl
+          variant="filled"
+          // sx={{ minWidth: 120 }}
+        >
           <InputLabel id="demo-simple-select-filled-label">Network</InputLabel>
           <Select
             labelId="demo-simple-select-filled-label"
