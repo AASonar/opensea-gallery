@@ -41,10 +41,10 @@ export default function AddressForm() {
     }
   }
   return (
-    <Grid container spacing={2}>
-      <Grid xs={2}>
+    <Grid container justifyContent="center">
+      <Grid xs="auto">
         <TextField
-          // sx={{ width: "40ch" }}
+          sx={{ width: "35ch", marginRight: 2 }}
           id="filled-basic"
           label="Wallet Address"
           variant="filled"
@@ -52,7 +52,7 @@ export default function AddressForm() {
           onChange={handleAddressChange}
         />
       </Grid>
-      <Grid xs={2}>
+      <Grid xs="auto">
         <FormControl
           variant="filled"
           // sx={{ minWidth: 120 }}
@@ -72,7 +72,7 @@ export default function AddressForm() {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs="auto">
         <LoadingButton
           onClick={handleClick}
           endIcon={<SendIcon />}
@@ -82,6 +82,7 @@ export default function AddressForm() {
           sx={{
             width: "30ch",
             height: "7ch",
+            marginLeft: 2,
           }}
         >
           Find NFTs
