@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   Moralis.start({ serverUrl, appId });
   const [address, setAddress] = useState("");
-  const [network, setNetwork] = useState("");
+  const [network, setNetwork] = useState("eth");
 
   return (
     <MoralisProvider

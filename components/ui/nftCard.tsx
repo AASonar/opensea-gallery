@@ -5,22 +5,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid } from "@mui/material";
 import FetchNFTs from "../moralisAPI";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { NFTCardDetails, NFTCardType } from "../types/nftCardType";
 import FetchTokenIdMetadata from "../moralisAPI/fetchTokenIdMetadata";
+import { AddressContext } from "../contexts/AddressContext";
+import { NFTContext } from "../contexts/NFTContext";
 
 export default function ActionAreaCard() {
-  const [nftCards, setNftCards] = useState<NFTCardType>();
+  const { address, setAddress, network, setNetwork } =
+    useContext(AddressContext);
+
+  const { nftCards, setNftCards } = useContext(NFTContext);
 
   useEffect(() => {
-    FetchNFTs("0x4bcbc28e18b8c983ca730d86a67bbeb8aa767e7a", "eth").then(
-      (nftDetails: any) => {
-        console.log(nftDetails);
-        setNftCards(nftDetails);
-      }
-    );
-
-    FetchTokenIdMetadata("0xed5af388653567af2f388e6224dc7c4b3241c544", "1833");
+    // FetchTokenIdMetadata("0xed5af388653567af2f388e6224dc7c4b3241c544", "1833");
   }, []);
 
   return (
