@@ -42,7 +42,7 @@ export default function ActionAreaCard() {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {metadata && JSON.stringify(JSON.parse(metadata).description)}
-                  {token_uri && JSON.stringify(getWebMetadata(token_uri))}
+                  {/* {token_uri && JSON.stringify(getWebMetadata(token_uri))} */}
                 </Typography>
               </CardContent>
             </CardActionArea>

@@ -13,7 +13,7 @@ const FetchNFTs = async (address: string, chain?: any) => {
   const { result, status } = response;
 
   if (status === "SYNCED") {
-    //console.log(result);
+    console.log(result);
     return result;
   }
 
