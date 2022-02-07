@@ -10,6 +10,7 @@ import { NFTCardDetails, NFTCardType } from "../types/nftCardType";
 import FetchTokenIdMetadata from "../moralisAPI/fetchTokenIdMetadata";
 import { AddressContext } from "../contexts/AddressContext";
 import { NFTContext } from "../contexts/NFTContext";
+import getWebMetadata from "../axios/getWebMetadata";
 
 export default function ActionAreaCard() {
   const { address, setAddress, network, setNetwork } =
@@ -23,15 +24,16 @@ export default function ActionAreaCard() {
 
   return (
     <Grid container spacing={4}>
-      {nftCards?.map(({ block_number, name, symbol, metadata }) => (
+      {nftCards?.map(({ block_number, name, symbol, metadata, token_uri }) => (
         <Grid key={block_number} item xs={3}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <CardMedia
                 component="img"
                 height="400"
-                image={metadata && JSON.parse(metadata).image}
+                image={metadata ? JSON.parse(metadata).image : null}
                 alt={metadata && JSON.stringify(JSON.parse(metadata).image)}
+                placeholder="blur"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -40,6 +42,7 @@ export default function ActionAreaCard() {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {metadata && JSON.stringify(JSON.parse(metadata).description)}
+                  {token_uri && JSON.stringify(getWebMetadata(token_uri))}
                 </Typography>
               </CardContent>
             </CardActionArea>

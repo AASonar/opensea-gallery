@@ -34,7 +34,8 @@ export default function AddressForm() {
     if (address && setNftCards) {
       setLoading(true);
       FetchNFTs(address, network).then((nftDetails: any) => {
-        //console.log(nftDetails);
+        console.log(nftDetails);
+        setNftCards(null);
         setNftCards(nftDetails);
         setLoading(false);
       });
