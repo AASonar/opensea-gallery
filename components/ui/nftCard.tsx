@@ -18,6 +18,8 @@ export default function ActionAreaCard() {
 
   const { nftCards, setNftCards } = useContext(NFTContext);
 
+  const [nftMetaImage, setNftMetaImage] = useState();
+
   useEffect(() => {
     // FetchTokenIdMetadata("0xed5af388653567af2f388e6224dc7c4b3241c544", "1833");
   }, []);
@@ -31,7 +33,11 @@ export default function ActionAreaCard() {
               <CardMedia
                 component="img"
                 height="400"
-                image={metadata ? JSON.parse(metadata).image : null}
+                image={
+                  metadata
+                    ? JSON.parse(metadata).image
+                    : token_uri && getWebMetadata(token_uri)
+                }
                 alt={metadata && JSON.stringify(JSON.parse(metadata).image)}
                 placeholder="blur"
               />
@@ -42,7 +48,6 @@ export default function ActionAreaCard() {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {metadata && JSON.stringify(JSON.parse(metadata).description)}
-                  {/* {token_uri && JSON.stringify(getWebMetadata(token_uri))} */}
                 </Typography>
               </CardContent>
             </CardActionArea>
