@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Script from "next/script";
-import { NftCard } from "../components/ui";
+import { NftCards } from "../components/ui";
 import AddressForm from "../components/ui/addressForm";
 import { NFTContext } from "../components/contexts/NFTContext";
 import { useContext, useState } from "react";
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <main className={styles.main}>
           <AddressForm></AddressForm>
           <h1>{address}</h1>
-          <NftCard></NftCard>
+          <NftCards></NftCards>
         </main>
 
         <footer className={styles.footer}>

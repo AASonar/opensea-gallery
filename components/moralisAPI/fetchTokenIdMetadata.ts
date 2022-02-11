@@ -17,7 +17,7 @@ const FetchTokenIdMetadata = async (
   //   const { } = response;
 
   if (response) {
-    console.log(response);
+    //console.log(response);
     return response;
   }
 
