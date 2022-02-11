@@ -18,11 +18,13 @@ export default function NFTCard({
 }: NFTCardProps) {
   const metadata = JSON.parse(rawMetadata ?? "{}");
 
-  const [img, setImg] = useState<string>(metadata.image);
+  const [img, setImg] = useState<any>(metadata.image);
+
   useEffect(() => {
     if (!metadata.image && token_uri && rawMetadata) {
       getWebMetadata(token_uri).then((img: any) => setImg(img));
     }
+    console.log(img);
   }, [token_uri, metadata.image, rawMetadata]);
 
   return (

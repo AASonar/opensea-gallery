@@ -28,7 +28,7 @@ export default function ActionAreaCard() {
   return (
     <Grid container spacing={3}>
       {nftCards?.map((params, i) => (
-        <Grid item key={params.block_number} xs={3}>
+        <Grid item key={params.block_number + i} xs={3}>
           <NFTCard {...params} />
         </Grid>
       ))}
