@@ -8,15 +8,15 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { Grid } from "@mui/material";
-import { AddressContext } from "../contexts/AddressContext";
+import { AddressContext } from "../../contexts/AddressContext";
 import { LoadingButton } from "@mui/lab";
 import SendIcon from "@mui/icons-material/Send";
-import { NFTContext } from "../contexts/NFTContext";
-import FetchNFTs from "../tzktAPI/fetchNFTs";
+import { NFTContext } from "../../contexts/NFTContext";
+import FetchNFTs from "../../tzktAPI/fetchNFTs";
+import FetchAccount from "../../tzktAPI/fetchAccount";
 
 export default function TezosForm() {
-  const { address, setAddress, network, setNetwork } =
-    useContext(AddressContext);
+  const { address, setAddress } = useContext(AddressContext);
 
   const { nftCards, setNftCards } = useContext(NFTContext);
 
@@ -29,9 +29,10 @@ export default function TezosForm() {
   function handleClick() {
     if (address) {
       setLoading(true);
-      FetchNFTs(address, true).then((details: any) => {
+      FetchAccount(address, true).then((details: any) => {
         setLoading(false);
       });
+      FetchNFTs(address, true).then((details: any) => {});
     }
   }
   return (

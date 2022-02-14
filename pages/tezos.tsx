@@ -8,7 +8,8 @@ import { NFTContext } from "../components/contexts/NFTContext";
 import { useContext, useState } from "react";
 import { NFTCardType } from "../components/types/nftCardType";
 import { AddressContext } from "../components/contexts/AddressContext";
-import TezosForm from "../components/ui/tezosForm";
+import TezosForm from "../components/ui/tezos/tezosForm";
+import AccCard from "../components/ui/tezos/accCard";
 
 const Tezos: NextPage = () => {
   const { address, setAddress, network, setNetwork } =
@@ -28,6 +29,7 @@ const Tezos: NextPage = () => {
         <main className={styles.main}>
           <TezosForm></TezosForm>
           <h1>{address}</h1>
+          <AccCard></AccCard>
           {/* <NftCards></NftCards> */}
         </main>
 
