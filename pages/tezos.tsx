@@ -27,9 +27,9 @@ const Tezos: NextPage = () => {
         </Head>
 
         <main className={styles.main}>
-          <TezosForm></TezosForm>
+          <TezosForm />
           <h1>{address}</h1>
-          <AccCard></AccCard>
+          {address && <AccCard />}
           {/* <NftCards></NftCards> */}
         </main>
 

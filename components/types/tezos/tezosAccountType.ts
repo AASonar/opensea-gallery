@@ -29,4 +29,5 @@ export interface TezosAccountType {
   numTransactions: number;
   tokenBalancesCount: number;
   tokenTransfersCount: number;
+  type: string;
 }

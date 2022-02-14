@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { TezosNFTType } from "../types/tezos/tezosnftType";
+import { TezosNFTType } from "../types/tezos/tezosNFTType";
 
 interface TezosNFTContextProps {
   nftCards?: TezosNFTType;
