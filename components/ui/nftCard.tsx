@@ -33,7 +33,6 @@ export default function NFTCard({
         <CardMedia
           component="img"
           height="400"
-          image={img}
           alt={metadata.image}
           placeholder="blur"
         />
