@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   Moralis.start({ serverUrl, appId });
   const [address, setAddress] = useState("");
+  const [isSubmitAddress, setIsSubmitAddress] = useState(false);
   const [network, setNetwork] = useState("eth");
 
   return (
@@ -20,7 +21,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       serverUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}`}
     >
       <AddressContext.Provider
-        value={{ address, setAddress, network, setNetwork }}
+        value={{
+          address,
+          setAddress,
+          network,
+          setNetwork,
+          isSubmitAddress,
+          setIsSubmitAddress,
+        }}
       >
         <Component {...pageProps} />
       </AddressContext.Provider>

@@ -12,8 +12,14 @@ import TezosForm from "../components/ui/tezos/tezosForm";
 import AccCard from "../components/ui/tezos/accCard";
 
 const Tezos: NextPage = () => {
-  const { address, setAddress, network, setNetwork } =
-    useContext(AddressContext);
+  const {
+    address,
+    setAddress,
+    network,
+    setNetwork,
+    setIsSubmitAddress,
+    isSubmitAddress,
+  } = useContext(AddressContext);
 
   const [nftCards, setNftCards] = useState<NFTCardType>();
 
@@ -29,7 +35,7 @@ const Tezos: NextPage = () => {
         <main className={styles.main}>
           <TezosForm />
           <h1>{address}</h1>
-          {address && <AccCard />}
+          {isSubmitAddress && <AccCard />}
           {/* <NftCards></NftCards> */}
         </main>
 

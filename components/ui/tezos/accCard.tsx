@@ -10,18 +10,19 @@ import FetchAccount from "../../tzktAPI/fetchAccount";
 import { TezosAccountType } from "../../types/tezos/tezosAccountType";
 
 export default function AccCard() {
-  const { address, setAddress } = useContext(AddressContext);
+  const { address, setAddress, isSubmitAddress, setIsSubmitAddress } =
+    useContext(AddressContext);
 
   const [accDetails, setAccDetails] = useState<TezosAccountType>();
 
   useEffect(() => {
-    //TODO: change region to dynamic
-    if (address) {
+    //TODO: change region to dynamics
+    if (address && setIsSubmitAddress) {
       FetchAccount(address, true).then((details: any) => {
         setAccDetails(details);
       });
     }
-  }, []);
+  }, [isSubmitAddress, setIsSubmitAddress]);
 
   // const { alias, balance, tokenBalancesCount, lastActivityTime } = accDetails;
 

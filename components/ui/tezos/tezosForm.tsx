@@ -16,7 +16,8 @@ import FetchNFTs from "../../tzktAPI/fetchNFTs";
 import FetchAccount from "../../tzktAPI/fetchAccount";
 
 export default function TezosForm() {
-  const { address, setAddress } = useContext(AddressContext);
+  const { address, setAddress, isSubmitAddress, setIsSubmitAddress } =
+    useContext(AddressContext);
 
   const { nftCards, setNftCards } = useContext(NFTContext);
 
@@ -28,9 +29,11 @@ export default function TezosForm() {
 
   function handleClick() {
     if (address) {
+      setIsSubmitAddress!(false);
       setLoading(true);
       FetchAccount(address, true).then((details: any) => {
         setLoading(false);
+        setIsSubmitAddress!(true);
       });
       FetchNFTs(address, true).then((details: any) => {});
     }

@@ -5,6 +5,8 @@ interface AddressContextProps {
   setAddress?(address: string): void;
   network?: string;
   setNetwork?(network: string): void;
+  isSubmitAddress?: boolean;
+  setIsSubmitAddress?(isSubmitAddress: boolean): void;
 }
 
 export const AddressContext = createContext<AddressContextProps>({});
