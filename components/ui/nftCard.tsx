@@ -1,4 +1,3 @@
-import { NFTCardDetails } from "../types/nftCardType";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -7,7 +6,8 @@ import Typography from "@mui/material/Typography";
 import { Grid, CardActionArea } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
-interface NFTCardProps extends NFTCardDetails {}
+import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
+import { NFTCardDetails } from "../types/nftCardType";
 
 export default function NFTCard({
   block_number,
@@ -15,7 +15,7 @@ export default function NFTCard({
   symbol,
   metadata: rawMetadata,
   token_uri,
-}: NFTCardProps) {
+}: NFTCardDetails) {
   const metadata = JSON.parse(rawMetadata ?? "{}");
 
   const [img, setImg] = useState<any>(metadata.image);

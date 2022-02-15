@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import { NFTCardDetails, NFTCardType } from "../types/nftCardType";
+import { TezosNFTType } from "../types/tezos/tezosNFTType";
 
 interface NFTContextProps {
-  nftCards?: NFTCardType;
-  setNftCards?(nftCards: any): void;
+  nftCardsData?: NFTCardType;
+  setNftCardsData?(nftCards: any): void;
 }
 
 export const NFTContext = createContext<NFTContextProps>({});

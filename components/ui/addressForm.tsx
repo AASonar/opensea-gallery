@@ -18,7 +18,7 @@ export default function AddressForm() {
   const { address, setAddress, network, setNetwork } =
     useContext(AddressContext);
 
-  const { nftCards, setNftCards } = useContext(NFTContext);
+  const { nftCardsData, setNftCardsData } = useContext(NFTContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -31,12 +31,12 @@ export default function AddressForm() {
   };
 
   function handleClick() {
-    if (address && setNftCards) {
+    if (address && setNftCardsData) {
       setLoading(true);
       FetchNFTs(address, network).then((nftDetails: any) => {
         //console.log(nftDetails);
-        setNftCards(null);
-        setNftCards(nftDetails);
+        setNftCardsData(null);
+        setNftCardsData(nftDetails);
         setLoading(false);
       });
     }

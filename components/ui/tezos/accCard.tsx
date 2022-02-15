@@ -24,7 +24,7 @@ export default function AccCard() {
     }
   }, [isSubmitAddress, setIsSubmitAddress]);
 
-  // const { alias, balance, tokenBalancesCount, lastActivityTime } = accDetails;
+  //const { alias, balance, tokenBalancesCount, lastActivityTime } = accDetails;
 
   function handleClick(profileID: string) {
     window.open(`https://objkt.com/profile/${profileID}`);

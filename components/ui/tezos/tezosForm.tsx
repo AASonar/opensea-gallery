@@ -19,8 +19,6 @@ export default function TezosForm() {
   const { address, setAddress, isSubmitAddress, setIsSubmitAddress } =
     useContext(AddressContext);
 
-  const { nftCards, setNftCards } = useContext(NFTContext);
-
   const [loading, setLoading] = useState(false);
 
   const handleAddressChange = (event: any) => {

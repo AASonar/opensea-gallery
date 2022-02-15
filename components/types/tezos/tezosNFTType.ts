@@ -25,7 +25,6 @@ interface TezosNFTToken {
 export interface TezosNFTDetails {
   balance: string;
   transfersCount: number;
-
   token: TezosNFTToken;
   firstTime: string;
   lastTime: string;
