@@ -9,40 +9,46 @@ import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
 import { NFTCardDetails } from "../types/nftCardType";
 
-export default function NFTCard({
-  block_number,
-  name,
-  symbol,
-  metadata: rawMetadata,
-  token_uri,
-}: NFTCardDetails) {
-  const metadata = JSON.parse(rawMetadata ?? "{}");
-
-  const [img, setImg] = useState<any>(metadata.image);
+interface TezosNFTCardProps extends TezosNFTDetails {
+  timeout: number;
+}
+export default function TezosNFTCard({
+  balance,
+  transfersCount,
+  token: {
+    id,
+    contract: { alias, address },
+    metadata,
+  },
+  lastTime,
+  timeout,
+}: TezosNFTCardProps) {
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!metadata.image && token_uri && rawMetadata) {
-      getWebMetadata(token_uri).then((img: any) => setImg(img));
-    }
-    console.log(img);
-  }, [token_uri, metadata.image, rawMetadata]);
+    setTimeout(() => {
+      setIsImageLoaded(true);
+    }, timeout);
+  }, []);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="400"
-          alt={metadata.image}
-          placeholder="blur"
-          image={metadata.image}
-        />
+        {isImageLoaded && (
+          <CardMedia
+            component="img"
+            height="400"
+            image={metadata?.thumbnailUri && metadata?.thumbnailUri}
+            alt={metadata?.name}
+            placeholder="blur"
+          />
+        )}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {name ?? metadata.name} ({symbol && symbol})
+            {metadata?.name} -- ({balance})
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {metadata.description}
+            {metadata?.description}
           </Typography>
         </CardContent>
       </CardActionArea>

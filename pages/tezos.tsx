@@ -40,7 +40,7 @@ const Tezos: NextPage = () => {
           <TezosForm />
           <h1>{address}</h1>
           {isSubmitAddress && <AccCard />}
-          {/* <NftCards></NftCards> */}
+          {<NftCards></NftCards>}
         </main>
 
         <footer className={styles.footer}>

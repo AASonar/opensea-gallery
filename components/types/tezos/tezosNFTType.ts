@@ -10,6 +10,8 @@ interface NFTTokenFormats {
 
 interface TezosNFTTokenMetadata {
   displayUri: string;
+  name: string;
+  description: string;
   thumbnailUri: string;
   formats?: NFTTokenFormats[];
 }
@@ -17,7 +19,7 @@ interface TezosNFTTokenMetadata {
 interface TezosNFTToken {
   id: number;
   contract: TezosContract;
-  metadata: TezosNFTTokenMetadata;
+  metadata?: TezosNFTTokenMetadata;
   standard: string;
   tokenId: string;
 }

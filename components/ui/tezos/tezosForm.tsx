@@ -14,6 +14,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { NFTContext } from "../../contexts/NFTContext";
 import FetchNFTs from "../../tzktAPI/fetchNFTs";
 import FetchAccount from "../../tzktAPI/fetchAccount";
+import { TezosNFTContext } from "../../contexts/TezosNFTContext";
 
 export default function TezosForm() {
   const { address, setAddress, isSubmitAddress, setIsSubmitAddress } =
@@ -21,19 +22,26 @@ export default function TezosForm() {
 
   const [loading, setLoading] = useState(false);
 
+  const { tezosNftCardsData, setTezosNftCardsData } =
+    useContext(TezosNFTContext);
+
   const handleAddressChange = (event: any) => {
     setAddress!(event.target.value);
   };
 
   function handleClick() {
-    if (address) {
+    if (address && setTezosNftCardsData) {
       setIsSubmitAddress!(false);
       setLoading(true);
       FetchAccount(address, true).then((details: any) => {
         setLoading(false);
         setIsSubmitAddress!(true);
       });
-      FetchNFTs(address, true).then((details: any) => {});
+      FetchNFTs(address, true).then((details: any) => {
+        setTezosNftCardsData(null);
+        setTezosNftCardsData(details);
+        setLoading(false);
+      });
     }
   }
   return (
@@ -67,4 +75,7 @@ export default function TezosForm() {
       </Grid>
     </Grid>
   );
+}
+function setTezosNftCardsData(arg0: null) {
+  throw new Error("Function not implemented.");
 }
