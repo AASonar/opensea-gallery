@@ -11,6 +11,7 @@ import { NFTCardDetails } from "../types/nftCardType";
 
 interface TezosNFTCardProps extends TezosNFTDetails {
   timeout: number;
+  gateway: number;
 }
 export default function TezosNFTCard({
   balance,
@@ -22,6 +23,7 @@ export default function TezosNFTCard({
   },
   lastTime,
   timeout,
+  gateway,
 }: TezosNFTCardProps) {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
@@ -31,6 +33,21 @@ export default function TezosNFTCard({
     }, timeout);
   }, []);
 
+  const ipfsDomains = [
+    "ipfs.io",
+    "gateway.ipfs.io",
+    "ipfs.eth.aragon.network",
+    "hub.textile.io",
+  ];
+
+  const regex = /^ipfs:\/\//;
+  const url = metadata?.displayUri?.replace(regex, "");
+  //const imageUrl = `https://${ipfsDomains[gateway]}/ipfs/${url}`;
+
+  const imageUrl = `https://gateway.ipfs.io/ipfs/${url}`;
+
+  //const imageUrl = `https://${ipfsDomains[1]}/ipfs/${url}`;
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -38,7 +55,7 @@ export default function TezosNFTCard({
           <CardMedia
             component="img"
             height="400"
-            image={metadata?.thumbnailUri && metadata?.thumbnailUri}
+            image={metadata?.displayUri && imageUrl}
             alt={metadata?.name}
             placeholder="blur"
           />

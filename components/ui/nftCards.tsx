@@ -26,8 +26,8 @@ export default function NftCards() {
         </Grid>
       ))}
       {(tezosNftCardsData ?? []).map((params, i) => (
-        <Grid item key={i} xs={3}>
-          <TezosNFTCard {...params} timeout={i * 700} />
+        <Grid item key={i} xs={2}>
+          <TezosNFTCard {...params} timeout={i * 100} gateway={i} />
         </Grid>
       ))}
     </Grid>

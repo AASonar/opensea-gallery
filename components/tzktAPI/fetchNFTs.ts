@@ -10,6 +10,7 @@ const FetchNFTs = async (address: string, metadata: boolean) => {
   const response = await axios.get(finalUrl, {
     headers: {
       "x-requested-with": "AcadArena@1.0",
+      SameSite: "None",
     },
   });
 
