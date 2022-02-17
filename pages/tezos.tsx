@@ -12,6 +12,7 @@ import TezosForm from "../components/ui/tezos/tezosForm";
 import AccCard from "../components/ui/tezos/accCard";
 import { TezosNFTType } from "../components/types/tezos/tezosNFTType";
 import { TezosNFTContext } from "../components/contexts/TezosNFTContext";
+import { Grid } from "@mui/material";
 
 const Tezos: NextPage = () => {
   const {
@@ -39,8 +40,12 @@ const Tezos: NextPage = () => {
         <main className={styles.main}>
           <TezosForm />
           <h1>{address}</h1>
-          {isSubmitAddress && <AccCard />}
-          {<NftCards></NftCards>}
+          <Grid container spacing={2}>
+            <Grid item>{isSubmitAddress && <AccCard />}</Grid>
+            <Grid item xs={9}>
+              {<NftCards></NftCards>}
+            </Grid>
+          </Grid>
         </main>
 
         <footer className={styles.footer}>
