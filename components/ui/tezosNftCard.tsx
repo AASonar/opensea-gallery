@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
 import { NFTCardDetails } from "../types/nftCardType";
 import getMarketLink, { MarketLinkProps } from "../utils/getMarketLink";
+import GetCreatorAlias from "../utils/getCreatorAlias";
 
 interface TezosNFTCardProps extends TezosNFTDetails {
   timeout: number;
@@ -29,10 +30,16 @@ export default function TezosNFTCard({
   gateway,
 }: TezosNFTCardProps) {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  const [tezosCreator, setTezosCreator] = useState<any>();
 
   useEffect(() => {
     setTimeout(() => {
       setIsImageLoaded(true);
+      if (metadata?.creators) {
+        GetCreatorAlias(metadata?.creators[0]).then((deets: any) => {
+          setTezosCreator(deets);
+        });
+      }
     }, timeout);
   }, []);
 
@@ -77,7 +84,7 @@ export default function TezosNFTCard({
                   {metadata?.name} -- ({balance})
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {metadata?.description}
+                  {tezosCreator}
                 </Typography>
               </CardContent>
             </CardActionArea>

@@ -1,3 +1,4 @@
+import { TezosNFTContext } from "../../contexts/TezosNFTContext";
 interface TezosContract {
   alias: string;
   address: string;
@@ -14,6 +15,7 @@ interface TezosNFTTokenMetadata {
   description: string;
   thumbnailUri: string;
   formats?: NFTTokenFormats[];
+  creators?: string[];
 }
 
 interface TezosNFTToken {

@@ -20,7 +20,7 @@ const getWebMetadata = async (metadataURL: string): Promise<urlMetadata> => {
   const { data, status } = response;
 
   if (status === 200) {
-    console.log(data);
+    // console.log(data);
     return data;
   }
 
