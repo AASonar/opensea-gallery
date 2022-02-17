@@ -8,12 +8,10 @@ const GetCreatorAlias = async (creatorAddress: string): Promise<string> => {
   const { alias, address } = accDeets;
 
   if (alias) {
-    console.log(alias);
     return alias;
   }
 
   if (address) {
-    console.log(address);
     return address;
   }
 
