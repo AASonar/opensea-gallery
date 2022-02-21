@@ -46,7 +46,7 @@ export default function TezosForm() {
   }
   return (
     <Grid container justifyContent="center">
-      <Grid xs="auto">
+      <Grid item xs="auto">
         <TextField
           sx={{ width: "35ch", marginRight: 2 }}
           id="filled-basic"
@@ -56,7 +56,6 @@ export default function TezosForm() {
           onChange={handleAddressChange}
         />
       </Grid>
-      <Grid xs="auto"></Grid>
       <Grid item xs="auto">
         <LoadingButton
           onClick={handleClick}
