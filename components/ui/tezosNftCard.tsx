@@ -40,6 +40,11 @@ export default function TezosNFTCard({
           setTezosCreator(deets);
         });
       }
+      if (!metadata?.creators) {
+        GetCreatorAlias(address).then((deets: any) => {
+          setTezosCreator(deets);
+        });
+      }
     }, timeout);
   }, []);
 

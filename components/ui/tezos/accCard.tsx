@@ -19,6 +19,7 @@ export default function AccCard() {
     //TODO: change region to dynamics
     if (address && setIsSubmitAddress) {
       FetchAccount(address, true).then((details: any) => {
+        console.log(details);
         setAccDetails(details);
       });
     }
@@ -46,7 +47,7 @@ export default function AccCard() {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {accDetails?.alias}
+              {accDetails?.alias ? accDetails?.alias : accDetails?.address}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               <List>
