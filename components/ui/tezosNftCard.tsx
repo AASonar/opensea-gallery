@@ -35,17 +35,17 @@ export default function TezosNFTCard({
   useEffect(() => {
     setTimeout(() => {
       setIsImageLoaded(true);
-      if (metadata?.creators) {
-        GetCreatorAlias(metadata?.creators[0]).then((deets: any) => {
-          setTezosCreator(deets);
-        });
-      }
-      if (!metadata?.creators) {
-        GetCreatorAlias(address).then((deets: any) => {
-          setTezosCreator(deets);
-        });
-      }
     }, timeout);
+    if (metadata?.creators) {
+      GetCreatorAlias(metadata?.creators[0]).then((deets: any) => {
+        setTezosCreator(deets);
+      });
+    }
+    if (!metadata?.creators) {
+      GetCreatorAlias(address).then((deets: any) => {
+        setTezosCreator(deets);
+      });
+    }
   }, []);
 
   const ipfsGateways = [
