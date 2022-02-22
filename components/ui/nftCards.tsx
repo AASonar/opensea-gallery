@@ -35,7 +35,7 @@ export default function NftCards() {
       });
       setNftData!(nft_array);
     }
-  }, []);
+  }, [nftBaseData]);
 
   return (
     <Grid container spacing={3}>

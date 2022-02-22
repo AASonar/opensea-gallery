@@ -26,7 +26,7 @@ export default function NFTCard({
           height="512"
           alt={name}
           placeholder="blur"
-          image={image}
+          image={image_512}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
