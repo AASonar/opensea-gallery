@@ -12,7 +12,6 @@ import { AddressContext } from "../contexts/AddressContext";
 import { LoadingButton } from "@mui/lab";
 import SendIcon from "@mui/icons-material/Send";
 import { NFTBaseContext } from "../contexts/NFTContext";
-import FetchNFTs from "../moralisAPI";
 import FetchTokenBalance from "../covalentAPI/fetchTokenBalance";
 
 export default function AddressForm() {
@@ -32,12 +31,10 @@ export default function AddressForm() {
   };
 
   function handleClick() {
-    if (chain_id && address && setNftBaseData) {
+    if (chain_id && address) {
       setLoading(true);
       FetchTokenBalance(chain_id, address).then((nftData: any) => {
-        //console.log(nftDetails);
-        setNftBaseData(null);
-        setNftBaseData(nftData);
+        setNftBaseData!(nftData);
         setLoading(false);
       });
     }

@@ -9,21 +9,38 @@ import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
 
 export default function NftCards() {
-  const { nftBaseData, setNftBaseData } = useContext(NFTBaseContext);
+  const {
+    nftBaseData,
+    setNftBaseData,
+    nftItemsData,
+    setNftItemsData,
+    nftData,
+    setNftData,
+  } = useContext(NFTBaseContext);
   const { tezosNftCardsData, setTezosNftCardsData } =
     useContext(TezosNFTContext);
 
   useEffect(() => {
-    // FetchTokenIdMetadata("0xed5af388653567af2f388e6224dc7c4b3241c544", "1833");
+    if (setNftBaseData) {
+      nftBaseData?.items.map((item) => {
+        if (item.type === "nft") {
+          setNftItemsData!(item);
+          item?.nft_data?.map((nft_data) => {
+            console.log(nft_data);
+            setNftData!(nft_data);
+          });
+        }
+      });
+    }
   }, []);
 
   return (
     <Grid container spacing={3}>
-      {(nftBaseData ?? []).map((params, i) => (
+      {/* {(nftBaseData ?? []).map((params, i) => (
         <Grid item key={i} xs={3}>
           <NFTCard {...params} />
         </Grid>
-      ))}
+      ))} */}
       {(tezosNftCardsData ?? []).map((params, i) => (
         <Grid item key={i} xs={3}>
           <TezosNFTCard {...params} timeout={i * 300} gateway={i} />
