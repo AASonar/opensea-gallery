@@ -1,6 +1,4 @@
 import Moralis from "moralis";
-import { useMoralis } from "react-moralis";
-import { NFTCardType } from "../types/nftCardType";
 
 const FetchNFTs = async (address: string, chain?: any) => {
   const options = {

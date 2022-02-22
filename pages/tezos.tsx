@@ -6,7 +6,7 @@ import Script from "next/script";
 import { NftCards } from "../components/ui";
 import { NFTContext } from "../components/contexts/NFTContext";
 import { useContext, useState } from "react";
-import { NFTCardType } from "../components/types/nftCardType";
+import { NFTCardType } from "../components/types/nftType";
 import { AddressContext } from "../components/contexts/AddressContext";
 import TezosForm from "../components/ui/tezos/tezosForm";
 import AccCard from "../components/ui/tezos/accCard";

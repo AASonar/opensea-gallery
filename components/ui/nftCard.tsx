@@ -7,7 +7,7 @@ import { Grid, CardActionArea } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTCardDetails } from "../types/nftCardType";
+import { NFTCardDetails } from "../types/nftType";
 
 export default function NFTCard({
   block_number,

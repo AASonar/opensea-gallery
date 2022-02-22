@@ -3,14 +3,13 @@ import * as React from "react";
 import { Grid } from "@mui/material";
 
 import { useEffect, useState, useContext } from "react";
-import { NFTContext } from "../contexts/NFTContext";
+import { NFTBaseContext } from "../contexts/NFTContext";
 import NFTCard from "./nftCard";
-import { NFTCardDetails } from "../types/nftCardType";
 import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
 
 export default function NftCards() {
-  const { nftCardsData, setNftCardsData } = useContext(NFTContext);
+  const { nftBaseData, setNftBaseData } = useContext(NFTBaseContext);
   const { tezosNftCardsData, setTezosNftCardsData } =
     useContext(TezosNFTContext);
 
@@ -20,7 +19,7 @@ export default function NftCards() {
 
   return (
     <Grid container spacing={3}>
-      {(nftCardsData ?? []).map((params, i) => (
+      {(nftBaseData ?? []).map((params, i) => (
         <Grid item key={i} xs={3}>
           <NFTCard {...params} />
         </Grid>

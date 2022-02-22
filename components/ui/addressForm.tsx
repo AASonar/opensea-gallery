@@ -11,7 +11,7 @@ import { Grid } from "@mui/material";
 import { AddressContext } from "../contexts/AddressContext";
 import { LoadingButton } from "@mui/lab";
 import SendIcon from "@mui/icons-material/Send";
-import { NFTContext } from "../contexts/NFTContext";
+import { NFTBaseContext } from "../contexts/NFTContext";
 import FetchNFTs from "../moralisAPI";
 import FetchTokenBalance from "../covalentAPI/fetchTokenBalance";
 
@@ -19,7 +19,7 @@ export default function AddressForm() {
   const { chain_id, setChain_id, address, setAddress } =
     useContext(AddressContext);
 
-  const { nftCardsData, setNftCardsData } = useContext(NFTContext);
+  const { nftBaseData, setNftBaseData } = useContext(NFTBaseContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -32,12 +32,12 @@ export default function AddressForm() {
   };
 
   function handleClick() {
-    if (chain_id && address && setNftCardsData) {
+    if (chain_id && address && setNftBaseData) {
       setLoading(true);
-      FetchTokenBalance(chain_id, address).then((nftDetails: any) => {
+      FetchTokenBalance(chain_id, address).then((nftData: any) => {
         //console.log(nftDetails);
-        setNftCardsData(null);
-        setNftCardsData(nftDetails);
+        setNftBaseData(null);
+        setNftBaseData(nftData);
         setLoading(false);
       });
     }

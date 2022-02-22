@@ -1,10 +1,9 @@
 import { createContext } from "react";
-import { NFTCardDetails, NFTCardType } from "../types/nftCardType";
-import { TezosNFTType } from "../types/tezos/tezosNFTType";
+import { NFTBaseType } from "../types/nftType";
 
 interface NFTContextProps {
-  nftCardsData?: NFTCardType;
-  setNftCardsData?(nftCards: any): void;
+  nftBaseData?: NFTBaseType;
+  setNftBaseData?(nftData: any): void;
 }
 
-export const NFTContext = createContext<NFTContextProps>({});
+export const NFTBaseContext = createContext<NFTContextProps>({});

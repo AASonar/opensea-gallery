@@ -7,7 +7,6 @@ import { Grid, CardActionArea, Grow } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTCardDetails } from "../types/nftCardType";
 import getMarketLink, { MarketLinkProps } from "../utils/getMarketLink";
 import GetCreatorAlias from "../utils/getCreatorAlias";
 
