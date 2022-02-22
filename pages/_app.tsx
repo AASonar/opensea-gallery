@@ -10,9 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const appId = process.env.NEXT_PUBLIC_APP_ID;
 
   Moralis.start({ serverUrl, appId });
+  const [chain_id, setChain_id] = useState("1");
   const [address, setAddress] = useState("");
   const [isSubmitAddress, setIsSubmitAddress] = useState(false);
-  const [network, setNetwork] = useState("eth");
 
   return (
     <MoralisProvider
@@ -22,10 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     >
       <AddressContext.Provider
         value={{
+          chain_id,
+          setChain_id,
           address,
           setAddress,
-          network,
-          setNetwork,
           isSubmitAddress,
           setIsSubmitAddress,
         }}

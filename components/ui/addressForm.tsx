@@ -13,9 +13,10 @@ import { LoadingButton } from "@mui/lab";
 import SendIcon from "@mui/icons-material/Send";
 import { NFTContext } from "../contexts/NFTContext";
 import FetchNFTs from "../moralisAPI";
+import FetchTokenBalance from "../covalentAPI/fetchTokenBalance";
 
 export default function AddressForm() {
-  const { address, setAddress, network, setNetwork } =
+  const { chain_id, setChain_id, address, setAddress } =
     useContext(AddressContext);
 
   const { nftCardsData, setNftCardsData } = useContext(NFTContext);
@@ -23,7 +24,7 @@ export default function AddressForm() {
   const [loading, setLoading] = useState(false);
 
   const handleSelectChange = (event: SelectChangeEvent) => {
-    setNetwork!(event.target.value);
+    setChain_id!(event.target.value);
   };
 
   const handleAddressChange = (event: any) => {
@@ -31,9 +32,9 @@ export default function AddressForm() {
   };
 
   function handleClick() {
-    if (address && setNftCardsData) {
+    if (chain_id && address && setNftCardsData) {
       setLoading(true);
-      FetchNFTs(address, network).then((nftDetails: any) => {
+      FetchTokenBalance(chain_id, address).then((nftDetails: any) => {
         //console.log(nftDetails);
         setNftCardsData(null);
         setNftCardsData(nftDetails);
@@ -62,14 +63,14 @@ export default function AddressForm() {
           <Select
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
-            value={network}
+            value={chain_id}
             onChange={handleSelectChange}
           >
-            <MenuItem value={"eth"}>Ethereum (ETH)</MenuItem>
-            <MenuItem value={"matic"}>Polygon (MATIC)</MenuItem>
-            <MenuItem value={"bsc"}>Binance Smart Chain (BSC)</MenuItem>
-            <MenuItem value={"avax"}>Avalance (AVAX)</MenuItem>
-            <MenuItem value={"ftm"}>Fantom (FTM)</MenuItem>
+            <MenuItem value={"1"}>Ethereum (ETH)</MenuItem>
+            <MenuItem value={"137"}>Polygon (MATIC)</MenuItem>
+            <MenuItem value={"56"}>Binance Smart Chain (BSC)</MenuItem>
+            <MenuItem value={"43114"}>Avalance (AVAX)</MenuItem>
+            <MenuItem value={"250"}>Fantom (FTM)</MenuItem>
           </Select>
         </FormControl>
       </Grid>
