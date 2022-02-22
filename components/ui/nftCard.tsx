@@ -7,42 +7,33 @@ import { Grid, CardActionArea } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTCardDetails } from "../types/nftType";
+import { NFTDataDetails, NFTDataType } from "../types/nftType";
 
 export default function NFTCard({
-  block_number,
-  name,
-  symbol,
-  metadata: rawMetadata,
-  token_uri,
-}: NFTCardDetails) {
-  const metadata = JSON.parse(rawMetadata ?? "{}");
-
-  const [img, setImg] = useState<any>(metadata.image);
-
-  useEffect(() => {
-    if (!metadata.image && token_uri && rawMetadata) {
-      getWebMetadata(token_uri).then((img: any) => setImg(img));
-    }
-    console.log(img);
-  }, [token_uri, metadata.image, rawMetadata]);
+  external_data: { image, image_512, description, name },
+  original_owner,
+  owner,
+  token_balance,
+  token_id,
+}: NFTDataDetails) {
+  useEffect(() => {}, []);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="400"
-          alt={metadata.image}
+          height="512"
+          alt={name}
           placeholder="blur"
-          image={metadata.image}
+          image={image}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {name ?? metadata.name} ({symbol && symbol})
+            {name} ({token_id})
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {metadata.description}
+            Creator: {original_owner}
           </Typography>
         </CardContent>
       </CardActionArea>

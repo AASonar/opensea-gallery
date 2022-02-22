@@ -4,9 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Script from "next/script";
 import { NftCards } from "../components/ui";
-import { NFTContext } from "../components/contexts/NFTContext";
 import { useContext, useState } from "react";
-import { NFTCardType } from "../components/types/nftType";
 import { AddressContext } from "../components/contexts/AddressContext";
 import TezosForm from "../components/ui/tezos/tezosForm";
 import AccCard from "../components/ui/tezos/accCard";
@@ -15,14 +13,8 @@ import { TezosNFTContext } from "../components/contexts/TezosNFTContext";
 import { Grid } from "@mui/material";
 
 const Tezos: NextPage = () => {
-  const {
-    address,
-    setAddress,
-    network,
-    setNetwork,
-    setIsSubmitAddress,
-    isSubmitAddress,
-  } = useContext(AddressContext);
+  const { address, setAddress, setIsSubmitAddress, isSubmitAddress } =
+    useContext(AddressContext);
 
   const [tezosNftCardsData, setTezosNftCardsData] = useState<TezosNFTType>();
 

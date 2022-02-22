@@ -7,6 +7,7 @@ import { NFTBaseContext } from "../contexts/NFTContext";
 import NFTCard from "./nftCard";
 import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
+import { NFTDataType } from "../types/nftType";
 
 export default function NftCards() {
   const {
@@ -20,27 +21,29 @@ export default function NftCards() {
   const { tezosNftCardsData, setTezosNftCardsData } =
     useContext(TezosNFTContext);
 
+  let nft_array: NFTDataType = [];
+
   useEffect(() => {
-    if (setNftBaseData) {
+    if (nftBaseData) {
       nftBaseData?.items.map((item) => {
         if (item.type === "nft") {
           setNftItemsData!(item);
           item?.nft_data?.map((nft_data) => {
-            console.log(nft_data);
-            setNftData!(nft_data);
+            nft_array?.push(nft_data);
           });
         }
       });
+      setNftData!(nft_array);
     }
   }, []);
 
   return (
     <Grid container spacing={3}>
-      {/* {(nftBaseData ?? []).map((params, i) => (
-        <Grid item key={i} xs={3}>
+      {(nftData ?? []).map((params, i) => (
+        <Grid item key={i} xs={2}>
           <NFTCard {...params} />
         </Grid>
-      ))} */}
+      ))}
       {(tezosNftCardsData ?? []).map((params, i) => (
         <Grid item key={i} xs={3}>
           <TezosNFTCard {...params} timeout={i * 300} gateway={i} />
