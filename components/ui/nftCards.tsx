@@ -7,7 +7,7 @@ import { NFTBaseContext } from "../contexts/NFTContext";
 import NFTCard from "./nftCard";
 import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
-import { NFTDataType } from "../types/nftType";
+import { NFTDataType, NFTItemsType } from "../types/nftType";
 
 export default function NftCards() {
   const {
@@ -21,18 +21,21 @@ export default function NftCards() {
   const { tezosNftCardsData, setTezosNftCardsData } =
     useContext(TezosNFTContext);
 
-  let nft_array: NFTDataType = [];
-
   useEffect(() => {
+    const nft_items: NFTItemsType[] = [];
+    const nft_array: NFTDataType[] = [];
+
     if (nftBaseData) {
       nftBaseData?.items.map((item) => {
         if (item.type === "nft") {
-          setNftItemsData!(item);
+          nft_items?.push(item);
+
           item?.nft_data?.map((nft_data) => {
             nft_array?.push(nft_data);
           });
         }
       });
+      setNftItemsData!(nft_items);
       setNftData!(nft_array);
     }
   }, [nftBaseData]);

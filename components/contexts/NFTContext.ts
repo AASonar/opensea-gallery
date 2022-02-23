@@ -4,9 +4,9 @@ import { NFTBaseType, NFTDataType, NFTItemsType } from "../types/nftType";
 interface NFTBaseProps {
   nftBaseData?: NFTBaseType;
   setNftBaseData?(nftBaseData: any): void;
-  nftItemsData?: NFTItemsType;
+  nftItemsData?: NFTItemsType[];
   setNftItemsData?(nftItemsData: any): void;
-  nftData?: NFTDataType;
+  nftData?: NFTDataType[];
   setNftData?(nftData: any): void;
 }
 

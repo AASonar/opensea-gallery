@@ -14,7 +14,7 @@ export interface ExternalNFTDataType {
   name: string;
 }
 
-export interface NFTDataDetails {
+export interface NFTDataType {
   external_data: ExternalNFTDataType;
   original_owner: string;
   owner?: string;
@@ -22,8 +22,6 @@ export interface NFTDataDetails {
   supported_erc?: string[];
   token_id: string;
 }
-
-export type NFTDataType = NFTDataDetails[];
 
 export interface NFTItemsType {
   balance: string;
@@ -33,7 +31,7 @@ export interface NFTItemsType {
   contract_ticker_symbol?: string;
   last_transfered_at: string;
   logo_url: string;
-  nft_data?: NFTDataType;
+  nft_data?: NFTDataType[];
   quote_rate: number;
   supports_erc?: string[];
   type: string;

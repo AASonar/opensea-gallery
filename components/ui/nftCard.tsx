@@ -7,7 +7,7 @@ import { Grid, CardActionArea } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTDataDetails, NFTDataType } from "../types/nftType";
+import { NFTDataType } from "../types/nftType";
 
 export default function NFTCard({
   external_data: { image, image_512, description, name },
@@ -15,7 +15,7 @@ export default function NFTCard({
   owner,
   token_balance,
   token_id,
-}: NFTDataDetails) {
+}: NFTDataType) {
   useEffect(() => {}, []);
 
   return (

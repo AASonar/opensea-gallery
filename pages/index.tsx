@@ -20,8 +20,8 @@ const Home: NextPage = () => {
     useContext(AddressContext);
 
   const [nftBaseData, setNftBaseData] = useState<NFTBaseType>();
-  const [nftItemsData, setNftItemsData] = useState<NFTItemsType>();
-  const [nftData, setNftData] = useState<NFTDataType>();
+  const [nftItemsData, setNftItemsData] = useState<NFTItemsType[]>();
+  const [nftData, setNftData] = useState<NFTDataType[]>();
 
   return (
     <div className={styles.container}>
