@@ -62,14 +62,26 @@ export default function AccCard() {
                 <ListItemText>
                   🧭 Total NFTs: {nftItemsData?.length}
                 </ListItemText>
-                <ListItemText>🌯 Total Balance Worth: {}</ListItemText>
+                <ListItemText>
+                  🌯 Total Balance Worth:{" "}
+                  {(nftBalance ?? [])
+                    .map((item) => item.quote)
+                    .reduce((prev, next) => prev + next, 0)}
+                </ListItemText>
                 <ListItemText>
                   💰 Money:
                   <ListItemText>
                     {(nftBalance ?? []).map((c, i) => {
                       return (
                         <ListItemText key={i}>
-                          {<NftImage src={c.logo_url} width={20} height={20} />}
+                          {
+                            <NftImage
+                              src={c.logo_url}
+                              width={20}
+                              height={20}
+                              placeholderImg="/placeholder_coin.png"
+                            />
+                          }
 
                           {` ${c.contract_ticker_symbol}: 
                           ${(+c.balance / 10 ** c.contract_decimals).toFixed(
