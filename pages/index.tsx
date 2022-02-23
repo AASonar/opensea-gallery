@@ -10,7 +10,6 @@ import { useContext, useState } from "react";
 import {
   NFTBaseType,
   NFTDataType,
-  NFTDataTypeExtended,
   NFTItemsType,
 } from "../components/types/nftType";
 import { AddressContext } from "../components/contexts/AddressContext";
@@ -24,7 +23,7 @@ const Home: NextPage = () => {
 
   const [nftBaseData, setNftBaseData] = useState<NFTBaseType>();
   const [nftItemsData, setNftItemsData] = useState<NFTItemsType[]>();
-  const [nftData, setNftData] = useState<NFTDataTypeExtended[]>();
+  const [nftData, setNftData] = useState<NFTDataType[]>();
 
   return (
     <div className={styles.container}>

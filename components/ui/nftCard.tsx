@@ -7,10 +7,11 @@ import { Grid, CardActionArea, Grow } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTDataType, NFTDataTypeExtended } from "../types/nftType";
+import { NFTDataType } from "../types/nftType";
 
-interface NFTDataTypeProps extends NFTDataTypeExtended {
+interface NFTDataTypeProps extends NFTDataType {
   timeout: number;
+  contract_address: string;
 }
 
 export default function NFTCard({

@@ -1,17 +1,12 @@
 import { createContext } from "react";
-import {
-  NFTBaseType,
-  NFTDataType,
-  NFTDataTypeExtended,
-  NFTItemsType,
-} from "../types/nftType";
+import { NFTBaseType, NFTDataType, NFTItemsType } from "../types/nftType";
 
 interface NFTBaseProps {
   nftBaseData?: NFTBaseType;
   setNftBaseData?(nftBaseData: any): void;
   nftItemsData?: NFTItemsType[];
   setNftItemsData?(nftItemsData: any): void;
-  nftData?: NFTDataTypeExtended[];
+  nftData?: NFTDataType[];
   setNftData?(nftData: any): void;
 }
 
