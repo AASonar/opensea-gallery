@@ -33,10 +33,14 @@ export default function AddressForm() {
   function handleClick() {
     if (chain_id && address) {
       setLoading(true);
-      FetchTokenBalance(chain_id, address).then((nftData: any) => {
-        setNftBaseData!(nftData);
-        setLoading(false);
-      });
+      FetchTokenBalance(chain_id, address)
+        .then((nftData: any) => {
+          setNftBaseData!(nftData);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+        });
     }
   }
   return (
