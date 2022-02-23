@@ -35,6 +35,7 @@ export default function AddressForm() {
       setLoading(true);
       FetchTokenBalance(chain_id, address)
         .then((nftData: any) => {
+          setNftBaseData!(null);
           setNftBaseData!(nftData);
           setLoading(false);
         })

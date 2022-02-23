@@ -7,7 +7,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { List } from "@mui/material";
 import { NFTBaseContext } from "../contexts/NFTContext";
 import { NFTItemsType } from "../types/nftType";
-import Image from "next/image";
+import NftImage from "./nftImage";
 
 export default function AccCard() {
   const {
@@ -20,6 +20,7 @@ export default function AccCard() {
   } = useContext(NFTBaseContext);
 
   const [nftBalance, setNftBalance] = useState<NFTItemsType[]>();
+  const [currencyImage, setCurrecyImage] = useState();
 
   useEffect(() => {
     setNftBalance!(
@@ -35,6 +36,8 @@ export default function AccCard() {
   function handleClick(profileID: string) {
     window.open(`https://opensea.io/${profileID}`);
   }
+
+  function handleErrorImage(src: string) {}
 
   return (
     <Grow in={true}>
@@ -66,14 +69,8 @@ export default function AccCard() {
                     {(nftBalance ?? []).map((c, i) => {
                       return (
                         <ListItemText key={i}>
-                          <Image
-                            src={c.logo_url}
-                            alt={c.contract_ticker_symbol}
-                            width={20}
-                            height={20}
-                            placeholder="blur"
-                            blurDataURL="https://github.com/AASonar/opensea-gallery/blob/main/assets/placeholder_coin.png"
-                          />
+                          {<NftImage src={c.logo_url} width={20} height={20} />}
+
                           {` ${c.contract_ticker_symbol}: 
                           ${(+c.balance / 10 ** c.contract_decimals).toFixed(
                             4
