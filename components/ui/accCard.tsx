@@ -6,6 +6,8 @@ import { CardActionArea, Grow, ListItemText } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import { List } from "@mui/material";
 import { NFTBaseContext } from "../contexts/NFTContext";
+import { NFTItemsType } from "../types/nftType";
+import Image from "next/image";
 
 export default function AccCard() {
   const {
@@ -17,9 +19,16 @@ export default function AccCard() {
     setNftData,
   } = useContext(NFTBaseContext);
 
+  const [nftBalance, setNftBalance] = useState<NFTItemsType[]>();
+
   useEffect(() => {
+    setNftBalance!(
+      nftBaseData?.items.filter(
+        (item) => item.type === "cryptocurrency" || item.type === "stablecoin"
+      )
+    );
     //TODO: change region to dynamics
-  }, []);
+  }, [nftBaseData]);
 
   //const { alias, balance, tokenBalancesCount, lastActivityTime } = accDetails;
 
@@ -50,12 +59,32 @@ export default function AccCard() {
                 <ListItemText>
                   🧭 Total NFTs: {nftItemsData?.length}
                 </ListItemText>
-                <ListItemText>🌯 Balance: {}</ListItemText>
+                <ListItemText>🌯 Total Balance Worth: {}</ListItemText>
                 <ListItemText>
-                  👑 Last Activity:{nftBaseData?.updated_at}
+                  💰 Money:
+                  <ListItemText>
+                    {(nftBalance ?? []).map((c, i) => {
+                      return (
+                        <ListItemText key={i}>
+                          <Image
+                            src={c.logo_url}
+                            alt={c.contract_ticker_symbol}
+                            width={20}
+                            height={20}
+                            placeholder="blur"
+                            blurDataURL="https://github.com/AASonar/opensea-gallery/blob/main/assets/placeholder_coin.png"
+                          />
+                          {` ${c.contract_ticker_symbol}: 
+                          ${(+c.balance / 10 ** c.contract_decimals).toFixed(
+                            4
+                          )}`}
+                        </ListItemText>
+                      );
+                    })}
+                  </ListItemText>
                 </ListItemText>
                 <ListItemText>
-                  🔢 Elo: (<Typography display="inline">Nice</Typography>)
+                  👑 Last Activity: {nftBaseData?.updated_at}
                 </ListItemText>
               </List>
             </Typography>

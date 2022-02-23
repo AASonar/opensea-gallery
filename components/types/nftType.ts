@@ -32,6 +32,7 @@ export interface NFTItemsType {
   last_transfered_at: string;
   logo_url: string;
   nft_data?: NFTDataType[];
+  quote: number;
   quote_rate: number;
   supports_erc?: string[];
   type: string;
