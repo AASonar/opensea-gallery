@@ -37,7 +37,12 @@ export default function AccCard() {
     window.open(`https://opensea.io/${profileID}`);
   }
 
-  function handleErrorImage(src: string) {}
+  function convertBalance(balance: number): string {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(balance);
+  }
 
   return (
     <Grow in={true}>
@@ -64,9 +69,11 @@ export default function AccCard() {
                 </ListItemText>
                 <ListItemText>
                   🌯 Total Balance Worth:{" "}
-                  {(nftBalance ?? [])
-                    .map((item) => item.quote)
-                    .reduce((prev, next) => prev + next, 0)}
+                  {convertBalance(
+                    (nftBalance ?? [])
+                      .map((item) => item.quote)
+                      .reduce((prev, next) => prev + next, 0)
+                  )}
                 </ListItemText>
                 <ListItemText>
                   💰 Money:
