@@ -22,15 +22,10 @@ export default function NftCards() {
     useContext(TezosNFTContext);
 
   useEffect(() => {
-    const nft_items: NFTItemsType[] = [];
-
     if (nftBaseData) {
-      nftBaseData?.items.map((item) => {
-        if (item.type === "nft") {
-          nft_items?.push(item);
-        }
-      });
-      setNftItemsData!(nft_items);
+      setNftItemsData!(
+        nftBaseData?.items.filter((item) => item.type === "nft")
+      );
     }
   }, [nftBaseData]);
 
