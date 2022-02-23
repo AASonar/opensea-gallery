@@ -65,7 +65,7 @@ export default function AccCard() {
             <Typography variant="body2" color="text.secondary">
               <List>
                 <ListItemText>
-                  🧭 Total NFTs: {nftItemsData?.length}
+                  🧭 Total NFTs: {nftItemsData?.length ?? 0}
                 </ListItemText>
                 <ListItemText>
                   🌯 Total Balance Worth:{" "}
@@ -76,7 +76,7 @@ export default function AccCard() {
                   )}
                 </ListItemText>
                 <ListItemText>
-                  💰 Money:
+                  💰 Cryptocurrencies:
                   <ListItemText>
                     {(nftBalance ?? []).map((c, i) => {
                       return (
@@ -84,8 +84,8 @@ export default function AccCard() {
                           {
                             <NftImage
                               src={c.logo_url}
-                              width={20}
-                              height={20}
+                              width={15}
+                              height={15}
                               placeholderImg="/placeholder_coin.png"
                             />
                           }
@@ -100,7 +100,7 @@ export default function AccCard() {
                   </ListItemText>
                 </ListItemText>
                 <ListItemText>
-                  👑 Last Activity: {nftBaseData?.updated_at}
+                  👑 Last Activity: {nftBaseData?.updated_at ?? "---"}
                 </ListItemText>
               </List>
             </Typography>
