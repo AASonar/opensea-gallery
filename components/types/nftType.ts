@@ -14,6 +14,9 @@ export interface ExternalNFTDataType {
   name: string;
 }
 
+export interface NFTDataTypeExtended extends NFTDataType {
+  contract_address: string;
+}
 export interface NFTDataType {
   external_data: ExternalNFTDataType;
   original_owner: string;

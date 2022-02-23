@@ -10,10 +10,13 @@ import { useContext, useState } from "react";
 import {
   NFTBaseType,
   NFTDataType,
+  NFTDataTypeExtended,
   NFTItemsType,
 } from "../components/types/nftType";
 import { AddressContext } from "../components/contexts/AddressContext";
 import { TezosNFTType } from "../components/types/tezos/tezosNFTType";
+import { Grid } from "@mui/material";
+import AccCard from "../components/ui/accCard";
 
 const Home: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =
@@ -21,7 +24,7 @@ const Home: NextPage = () => {
 
   const [nftBaseData, setNftBaseData] = useState<NFTBaseType>();
   const [nftItemsData, setNftItemsData] = useState<NFTItemsType[]>();
-  const [nftData, setNftData] = useState<NFTDataType[]>();
+  const [nftData, setNftData] = useState<NFTDataTypeExtended[]>();
 
   return (
     <div className={styles.container}>
@@ -45,7 +48,12 @@ const Home: NextPage = () => {
         <main className={styles.main}>
           <AddressForm></AddressForm>
           <h1>{address}</h1>
-          {nftBaseData && <NftCards></NftCards>}
+          <Grid container spacing={2}>
+            <Grid item>{<AccCard />}</Grid>
+            <Grid item xs={9}>
+              {nftBaseData && <NftCards></NftCards>}
+            </Grid>
+          </Grid>
         </main>
 
         <footer className={styles.footer}>

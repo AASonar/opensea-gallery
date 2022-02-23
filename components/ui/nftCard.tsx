@@ -7,9 +7,9 @@ import { Grid, CardActionArea, Grow } from "@mui/material";
 import getWebMetadata from "../axios/getWebMetadata";
 import { useEffect, useState } from "react";
 import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTDataType } from "../types/nftType";
+import { NFTDataType, NFTDataTypeExtended } from "../types/nftType";
 
-interface NFTDataTypeProps extends NFTDataType {
+interface NFTDataTypeProps extends NFTDataTypeExtended {
   timeout: number;
 }
 
@@ -20,6 +20,7 @@ export default function NFTCard({
   token_balance,
   token_id,
   timeout,
+  contract_address,
 }: NFTDataTypeProps) {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
@@ -29,12 +30,20 @@ export default function NFTCard({
     }, timeout);
   }, []);
 
+  function handleClick(contract_address: string, token_id: string) {
+    window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);
+  }
+
   return (
     <div>
       {isImageLoaded && (
         <Grow in={true}>
           <Card sx={{ maxWidth: 512, maxLength: 512 }}>
-            <CardActionArea>
+            <CardActionArea
+              onClick={() => {
+                handleClick(contract_address, token_id);
+              }}
+            >
               <CardMedia
                 component="img"
                 height="512"
