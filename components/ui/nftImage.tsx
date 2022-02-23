@@ -6,7 +6,7 @@ interface NftImageProps extends ImageProps {
 }
 
 export default function NftImage({
-  placeholderImg = "/placeholder_coin.png",
+  placeholderImg,
   onError,
   src,
   alt,
@@ -22,7 +22,9 @@ export default function NftImage({
         if (onError) {
           onError(e);
         }
-        setFinalSrc(placeholderImg);
+        if (placeholderImg) {
+          setFinalSrc(placeholderImg);
+        }
       }}
     />
   );
