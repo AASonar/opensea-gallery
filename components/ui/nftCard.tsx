@@ -35,6 +35,12 @@ export default function NFTCard({
     window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);
   }
 
+  const handleImageError = (e: any) => {
+    e.target.onerror = null;
+    // e.target.style.display = 'none'
+    e.target.src = image ? image : "/no_image_ph.jpg";
+  };
+
   return (
     <div>
       {isImageLoaded && (
@@ -49,8 +55,8 @@ export default function NFTCard({
                 component="img"
                 height="512"
                 alt={name}
-                placeholder="blur"
-                image={image_512 ?? image}
+                src={image_512}
+                onError={handleImageError}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

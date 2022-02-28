@@ -7,11 +7,7 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: [
-      "logos.covalenthq.com",
-      "www.covalenthq.com",
-      "www.iconpacks.net",
-    ],
+    domains: [],
   },
   env: {
     COVALENT_API_KEY: process.env.COVALENT_API_KEY,

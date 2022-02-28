@@ -83,7 +83,9 @@ export default function AccCard() {
                         <ListItemText key={i}>
                           {
                             <NftImage
-                              src={c.logo_url}
+                              src={`/api/imagefetcher?url=${encodeURIComponent(
+                                c.logo_url
+                              )}`}
                               width={15}
                               height={15}
                               placeholderImg="/placeholder_coin.png"
