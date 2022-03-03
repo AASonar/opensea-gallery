@@ -8,6 +8,7 @@ import { List } from "@mui/material";
 import { NFTBaseContext } from "../contexts/NFTContext";
 import { NFTItemsType } from "../types/nftType";
 import NftImage from "./nftImage";
+import { useSelect } from "react-supabase";
 
 export default function AccCard() {
   const {
