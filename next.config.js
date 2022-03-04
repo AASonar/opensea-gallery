@@ -11,6 +11,7 @@ module.exports = {
   },
   env: {
     COVALENT_API_KEY: process.env.COVALENT_API_KEY,
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
   },
   nextConfig,
 };
