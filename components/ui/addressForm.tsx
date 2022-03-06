@@ -45,53 +45,57 @@ export default function AddressForm() {
     }
   }
   return (
-    <Grid container justifyContent="center">
-      <Grid xs="auto">
-        <TextField
-          sx={{ width: "35ch", marginRight: 2 }}
-          id="filled-basic"
-          label="Wallet Address"
-          variant="filled"
-          value={address}
-          onChange={handleAddressChange}
-        />
-      </Grid>
-      <Grid xs="auto">
-        <FormControl
-          variant="filled"
-          // sx={{ minWidth: 120 }}
-        >
-          <InputLabel id="demo-simple-select-filled-label">Network</InputLabel>
-          <Select
-            labelId="demo-simple-select-filled-label"
-            id="demo-simple-select-filled"
-            value={chain_id}
-            onChange={handleSelectChange}
+    <div>
+      <Grid container justifyContent="center">
+        <Grid item xs="auto">
+          <TextField
+            sx={{ width: "35ch", marginRight: 2 }}
+            id="filled-basic"
+            label="Wallet Address"
+            variant="filled"
+            value={address}
+            onChange={handleAddressChange}
+          />
+        </Grid>
+        <Grid item xs="auto">
+          <FormControl
+            variant="filled"
+            // sx={{ minWidth: 120 }}
           >
-            <MenuItem value={"1"}>Ethereum (ETH)</MenuItem>
-            <MenuItem value={"137"}>Polygon (MATIC)</MenuItem>
-            <MenuItem value={"56"}>Binance Smart Chain (BSC)</MenuItem>
-            <MenuItem value={"43114"}>Avalance (AVAX)</MenuItem>
-            <MenuItem value={"250"}>Fantom (FTM)</MenuItem>
-          </Select>
-        </FormControl>
+            <InputLabel id="demo-simple-select-filled-label">
+              Network
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              value={chain_id}
+              onChange={handleSelectChange}
+            >
+              <MenuItem value={"1"}>Ethereum (ETH)</MenuItem>
+              <MenuItem value={"137"}>Polygon (MATIC)</MenuItem>
+              <MenuItem value={"56"}>Binance Smart Chain (BSC)</MenuItem>
+              <MenuItem value={"43114"}>Avalance (AVAX)</MenuItem>
+              <MenuItem value={"250"}>Fantom (FTM)</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs="auto">
+          <LoadingButton
+            onClick={handleClick}
+            endIcon={<SendIcon />}
+            loading={loading}
+            loadingPosition="end"
+            variant="contained"
+            sx={{
+              width: "30ch",
+              height: "7ch",
+              marginLeft: 2,
+            }}
+          >
+            Find NFTs
+          </LoadingButton>
+        </Grid>
       </Grid>
-      <Grid item xs="auto">
-        <LoadingButton
-          onClick={handleClick}
-          endIcon={<SendIcon />}
-          loading={loading}
-          loadingPosition="end"
-          variant="contained"
-          sx={{
-            width: "30ch",
-            height: "7ch",
-            marginLeft: 2,
-          }}
-        >
-          Find NFTs
-        </LoadingButton>
-      </Grid>
-    </Grid>
+    </div>
   );
 }
