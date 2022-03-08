@@ -1,10 +1,15 @@
 import { useFilter, useUpdate } from "react-supabase";
 import { UserType } from "../type/userType";
+import { createClient } from "@supabase/supabase-js";
 
 export const UpdateUserByID = (user: UserType) => {
-  const [{ count, data, error, fetching }, execute] = useUpdate("users");
+  const supabaseUrl = "https://wckwmmvmxkaspwquoaqf.supabase.co";
+  const supabaseKey = process.env.SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey ?? "");
+  //   const [{ count, data, error, fetching }, execute] = useUpdate("user");
 
   const userFields = {
+    user_id: user.user_id,
     username: user.username,
     email: user.email,
     photo_url: user.photo_url,
@@ -19,9 +24,11 @@ export const UpdateUserByID = (user: UserType) => {
     updated_by: user.updated_by,
   };
 
-  return async function updateUsers() {
-    const { count, data, error } = await execute(userFields, (query) =>
-      query.eq("user_id", user.user_id)
-    );
-  };
+  async function updateUsers(userData: UserType) {
+    const { data, error } = await supabase
+      .from("user")
+      .update(userData)
+      .eq("user_id", userData.user_id);
+  }
+  updateUsers(userFields);
 };

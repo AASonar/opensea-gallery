@@ -1,11 +1,12 @@
 import MUIDataTable from "mui-datatables";
-import { useFilter, useSelect } from "react-supabase";
+import { useEffect, useState } from "react";
+import { useFilter, useRealtime, useSelect } from "react-supabase";
+import { SelectAllUsers } from "./queries/selectAllUsers";
 import UpdateUserDialog from "./UpdateUserDialog";
 
 export default function DbUsers() {
   const columns = ["User ID", "Username", "Email", "Description", "Actions"];
-
-  const [{ count, data, error, fetching }, reexecute] = useSelect("user");
+  const [{ data, error, fetching }, reexecute] = useRealtime("user");
 
   const dataTable =
     data &&
@@ -14,8 +15,9 @@ export default function DbUsers() {
       user.username,
       user.email,
       user.description,
-      <UpdateUserDialog key={user.user_id} UserID={user.user_id} />,
+      <UpdateUserDialog key={user.user_id} userData={user} />,
     ]);
+
   const options = {
     filterType: "dropdown",
     responsive: "scroll",

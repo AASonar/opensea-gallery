@@ -20,18 +20,16 @@ import SelectUserWalletByID from "./queries/selectUserWalletByID";
 import { UserType } from "./type/userType";
 import { UpdateUserByID } from "./queries/updateUserById";
 
-interface UserProps {
-  UserID: number;
-}
-
-export default function UpdateUserDialog({ UserID }: UserProps) {
+export default function UpdateUserDialog({ userData }: any) {
   const [open, setOpen] = useState(false);
   const [chain_id, setChain_id] = useState("1");
 
-  const [user, setUser] = useState<UserType>(SelectUserByID(UserID));
-  const [userWallet, setUserWallet] = useState(SelectUserWalletByID(UserID));
+  // const userWalletData = SelectUserWalletByID(UserID);
+  const [user, setUser] = useState<UserType>(userData);
+  //const [userWallet, setUserWallet] = useState(userWalletData);
 
   const handleClickOpen = () => {
+    console.log(user);
     setOpen(true);
   };
 
@@ -39,10 +37,9 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
     setOpen(false);
   };
 
-  const updatedUser = [];
-
   const handleUpdate = () => {
-    // UpdateUserByID(user);
+    //console.log(user);
+    UpdateUserByID(user);
     setOpen(false);
   };
 
@@ -55,7 +52,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
       <Button variant="outlined" onClick={handleClickOpen}>
         Edit
       </Button>
-      {user && (
+      {userData && (
         <Dialog
           open={open}
           onClose={handleClose}
@@ -70,7 +67,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
                 required
                 id="outlined-required"
                 label="Username"
-                value={user.username}
+                value={user?.username}
                 onChange={(val) =>
                   setUser({ ...user, username: val.target.value })
                 }
@@ -80,17 +77,23 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
               <TextField
                 id="outlined-required"
                 label="Email"
-                value={user.email}
+                value={user?.email}
+                onChange={(val) =>
+                  setUser({ ...user, email: val.target.value })
+                }
               />
             </Grid>
             <Grid item>
               <TextField
                 id="outlined-required"
                 label="Description"
-                value={user.description}
+                value={user?.description}
+                onChange={(val) =>
+                  setUser({ ...user, description: val.target.value })
+                }
               />
             </Grid>
-            {userWallet?.wallet?.map((address: any, i: number) => (
+            {/* {userWallet?.wallet?.map((address: any, i: number) => (
               <Grid key={i} item xs={10}>
                 <FormControl
                   variant="filled"
@@ -121,7 +124,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
                   value={address.address}
                 />
               </Grid>
-            ))}
+            ))} */}
           </Grid>
           {/* <DialogContentText id="alert-dialog-description">
             </DialogContentText> */}

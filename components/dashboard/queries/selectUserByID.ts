@@ -7,7 +7,9 @@ function SelectUserByID(UserID: number) {
   });
 
   const userData = data && data[0];
-  return userData;
+
+  console.log("inside seleect", userData);
+  return { userData, reexecute };
 }
 
 export default SelectUserByID;
