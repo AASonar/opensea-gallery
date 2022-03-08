@@ -18,19 +18,21 @@ import {
 import SelectUserByID from "./queries/selectUserByID";
 import SelectUserWalletByID from "./queries/selectUserWalletByID";
 import { User } from "./type/user";
-import { UpdateUserByID } from "./queries/updateUserById";
+import { UpdateUser } from "./queries/updateUser";
 import { Wallet } from "./type/wallet";
+import { UpdateWallet } from "./queries/updateWallet";
+import { UpdateUserWallet } from "./queries/updateUserWallet";
 
 export default function UpdateUserDialog({ userData }: any) {
   const [open, setOpen] = useState(false);
   const [chain_id, setChain_id] = useState("1");
 
   const [user, setUser] = useState<User>(userData);
-  const userWalletData = SelectUserWalletByID(user.user_id);
-  const [wallet, setWallet] = useState<Wallet[]>(userWalletData);
+  const walletData = SelectUserWalletByID(user.user_id);
+  const [wallet, setWallet] = useState<Wallet[]>(walletData);
 
   const handleClickOpen = () => {
-    setWallet(userWalletData);
+    setWallet(walletData);
     setOpen(true);
   };
 
@@ -39,7 +41,9 @@ export default function UpdateUserDialog({ userData }: any) {
   };
 
   const handleUpdate = () => {
-    UpdateUserByID(user);
+    UpdateUser(user);
+    wallet.forEach((w) => UpdateWallet(w));
+    // UpdateUserWallet();
     setOpen(false);
   };
 
@@ -94,6 +98,7 @@ export default function UpdateUserDialog({ userData }: any) {
               />
             </Grid>
             {wallet?.map((address: any, i: number) => (
+              //wrap in component
               <Grid key={i} item xs={10}>
                 <FormControl
                   variant="filled"
@@ -122,6 +127,11 @@ export default function UpdateUserDialog({ userData }: any) {
                   id="outlined-required"
                   label="Wallet Address"
                   value={address.address}
+                  onChange={(val) => {
+                    const newWallet = [...wallet];
+                    newWallet[i].address = val.target.value;
+                    setWallet(newWallet);
+                  }}
                 />
               </Grid>
             ))}

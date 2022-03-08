@@ -1,7 +1,7 @@
 import { supabaseClient } from "../supabase/supabaseDetails";
 import { User } from "../type/user";
 
-export const UpdateUserByID = (user: User) => {
+export const UpdateUser = (user: User) => {
   //   const [{ count, data, error, fetching }, execute] = useUpdate("user");
 
   const userFields = {
