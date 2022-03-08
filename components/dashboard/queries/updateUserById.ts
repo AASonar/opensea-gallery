@@ -1,11 +1,10 @@
 import { useFilter, useUpdate } from "react-supabase";
 import { UserType } from "../type/userType";
 
-const UpdateUserByID = (user: UserType) => {
+export const UpdateUserByID = (user: UserType) => {
   const [{ count, data, error, fetching }, execute] = useUpdate("users");
 
   const userFields = {
-    user_id: user.user_id,
     username: user.username,
     email: user.email,
     photo_url: user.photo_url,

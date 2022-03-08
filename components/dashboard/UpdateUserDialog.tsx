@@ -17,6 +17,8 @@ import {
 } from "@mui/material";
 import SelectUserByID from "./queries/selectUserByID";
 import SelectUserWalletByID from "./queries/selectUserWalletByID";
+import { UserType } from "./type/userType";
+import { UpdateUserByID } from "./queries/updateUserById";
 
 interface UserProps {
   UserID: number;
@@ -26,9 +28,8 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
   const [open, setOpen] = useState(false);
   const [chain_id, setChain_id] = useState("1");
 
-  const userData = SelectUserByID(UserID);
-  const userWalletData = SelectUserWalletByID(UserID);
-  //console.log(userWalletData?.wallet);
+  const [user, setUser] = useState<UserType>(SelectUserByID(UserID));
+  const [userWallet, setUserWallet] = useState(SelectUserWalletByID(UserID));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,7 +39,10 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
     setOpen(false);
   };
 
+  const updatedUser = [];
+
   const handleUpdate = () => {
+    // UpdateUserByID(user);
     setOpen(false);
   };
 
@@ -51,7 +55,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
       <Button variant="outlined" onClick={handleClickOpen}>
         Edit
       </Button>
-      {userData && (
+      {user && (
         <Dialog
           open={open}
           onClose={handleClose}
@@ -66,24 +70,27 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
                 required
                 id="outlined-required"
                 label="Username"
-                defaultValue={userData.username}
+                value={user.username}
+                onChange={(val) =>
+                  setUser({ ...user, username: val.target.value })
+                }
               />
             </Grid>
             <Grid item>
               <TextField
                 id="outlined-required"
                 label="Email"
-                defaultValue={userData.email}
+                value={user.email}
               />
             </Grid>
             <Grid item>
               <TextField
                 id="outlined-required"
                 label="Description"
-                defaultValue={userData.description}
+                value={user.description}
               />
             </Grid>
-            {userWalletData?.wallet?.map((address: any, i: number) => (
+            {userWallet?.wallet?.map((address: any, i: number) => (
               <Grid key={i} item xs={10}>
                 <FormControl
                   variant="filled"
@@ -111,7 +118,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
                   sx={{ width: "48ch" }}
                   id="outlined-required"
                   label="Wallet Address"
-                  defaultValue={address.address}
+                  value={address.address}
                 />
               </Grid>
             ))}
@@ -121,7 +128,7 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
 
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClose} autoFocus>
+            <Button onClick={handleUpdate} autoFocus>
               Update
             </Button>
           </DialogActions>
