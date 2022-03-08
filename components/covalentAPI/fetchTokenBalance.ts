@@ -21,7 +21,7 @@ const FetchTokenBalance = async (
   const { data: data_inside } = data;
 
   if (status === 200) {
-    console.log(data_inside);
+    //console.log(data_inside);
     return data_inside;
   }
 

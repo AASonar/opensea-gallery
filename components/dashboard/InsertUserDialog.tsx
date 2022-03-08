@@ -29,7 +29,7 @@ export default function InsertUserDialog() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Edit
+        Insert
       </Button>
       <Dialog
         open={open}
@@ -44,9 +44,9 @@ export default function InsertUserDialog() {
           <DialogContentText id="alert-dialog-description"></DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleClose} autoFocus>
-            Agree
+            Insert
           </Button>
         </DialogActions>
       </Dialog>

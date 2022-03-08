@@ -19,17 +19,16 @@ import SelectUserByID from "./queries/selectUserByID";
 import SelectUserWalletByID from "./queries/selectUserWalletByID";
 
 interface UserProps {
-  key: number;
   UserID: number;
 }
 
-export default function UpdateUserDialog({ key, UserID }: UserProps) {
+export default function UpdateUserDialog({ UserID }: UserProps) {
   const [open, setOpen] = useState(false);
   const [chain_id, setChain_id] = useState("1");
 
   const userData = SelectUserByID(UserID);
   const userWalletData = SelectUserWalletByID(UserID);
-  console.log(userWalletData);
+  console.log(userWalletData?.wallet);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,8 +79,8 @@ export default function UpdateUserDialog({ key, UserID }: UserProps) {
                 defaultValue={userData.description}
               />
             </Grid>
-            {userWalletData?.wallet?.map((address: any) => {
-              <Grid item xs={10}>
+            {userWalletData?.wallet?.map((address: any, i: number) => (
+              <Grid key={i} item xs={10}>
                 <FormControl
                   variant="filled"
                   // sx={{ minWidth: 120 }}
@@ -105,20 +104,21 @@ export default function UpdateUserDialog({ key, UserID }: UserProps) {
                   </Select>
                 </FormControl>
                 <TextField
+                  sx={{ width: "48ch" }}
                   id="outlined-required"
                   label="Wallet Address"
                   defaultValue={address.address}
                 />
-              </Grid>;
-            })}
+              </Grid>
+            ))}
           </Grid>
           {/* <DialogContentText id="alert-dialog-description">
             </DialogContentText> */}
 
           <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleClose} autoFocus>
-              Agree
+              Update
             </Button>
           </DialogActions>
         </Dialog>
