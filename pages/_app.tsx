@@ -5,10 +5,7 @@ import { useState } from "react";
 
 import { createClient } from "@supabase/supabase-js";
 import { Provider } from "react-supabase";
-
-const supabaseUrl = "https://wckwmmvmxkaspwquoaqf.supabase.co";
-const supabaseKey = process.env.SUPABASE_KEY ?? "";
-const client = createClient(supabaseUrl, supabaseKey);
+import { supabaseClient } from "../components/dashboard/supabase/supabaseDetails";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chain_id, setChain_id] = useState("1");
@@ -16,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [isSubmitAddress, setIsSubmitAddress] = useState(false);
 
   return (
-    <Provider value={client}>
+    <Provider value={supabaseClient}>
       <AddressContext.Provider
         value={{
           chain_id,

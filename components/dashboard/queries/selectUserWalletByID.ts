@@ -9,8 +9,7 @@ const SelectUserWalletByID = (UserID: number) => {
         `
       user_id,
       wallet (
-        address,
-        chain_id
+        *
       )
     `
       )
@@ -20,7 +19,7 @@ const SelectUserWalletByID = (UserID: number) => {
     filter,
   });
 
-  return data && data[0];
+  return data && data[0].wallet;
 };
 
 export default SelectUserWalletByID;

@@ -17,19 +17,20 @@ import {
 } from "@mui/material";
 import SelectUserByID from "./queries/selectUserByID";
 import SelectUserWalletByID from "./queries/selectUserWalletByID";
-import { UserType } from "./type/userType";
+import { User } from "./type/user";
 import { UpdateUserByID } from "./queries/updateUserById";
+import { Wallet } from "./type/wallet";
 
 export default function UpdateUserDialog({ userData }: any) {
   const [open, setOpen] = useState(false);
   const [chain_id, setChain_id] = useState("1");
 
-  // const userWalletData = SelectUserWalletByID(UserID);
-  const [user, setUser] = useState<UserType>(userData);
-  //const [userWallet, setUserWallet] = useState(userWalletData);
+  const [user, setUser] = useState<User>(userData);
+  const userWalletData = SelectUserWalletByID(user.user_id);
+  const [wallet, setWallet] = useState<Wallet[]>(userWalletData);
 
   const handleClickOpen = () => {
-    console.log(user);
+    setWallet(userWalletData);
     setOpen(true);
   };
 
@@ -38,7 +39,6 @@ export default function UpdateUserDialog({ userData }: any) {
   };
 
   const handleUpdate = () => {
-    //console.log(user);
     UpdateUserByID(user);
     setOpen(false);
   };
@@ -52,7 +52,7 @@ export default function UpdateUserDialog({ userData }: any) {
       <Button variant="outlined" onClick={handleClickOpen}>
         Edit
       </Button>
-      {userData && (
+      {user && wallet && (
         <Dialog
           open={open}
           onClose={handleClose}
@@ -93,7 +93,7 @@ export default function UpdateUserDialog({ userData }: any) {
                 }
               />
             </Grid>
-            {/* {userWallet?.wallet?.map((address: any, i: number) => (
+            {wallet?.map((address: any, i: number) => (
               <Grid key={i} item xs={10}>
                 <FormControl
                   variant="filled"
@@ -124,7 +124,7 @@ export default function UpdateUserDialog({ userData }: any) {
                   value={address.address}
                 />
               </Grid>
-            ))} */}
+            ))}
           </Grid>
           {/* <DialogContentText id="alert-dialog-description">
             </DialogContentText> */}
