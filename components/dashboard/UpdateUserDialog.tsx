@@ -28,13 +28,17 @@ export default function UpdateUserDialog({ UserID }: UserProps) {
 
   const userData = SelectUserByID(UserID);
   const userWalletData = SelectUserWalletByID(UserID);
-  console.log(userWalletData?.wallet);
+  //console.log(userWalletData?.wallet);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleUpdate = () => {
     setOpen(false);
   };
 
