@@ -4,11 +4,11 @@ import { Grid } from "@mui/material";
 
 import { useEffect, useState, useContext } from "react";
 import { NFTBaseContext } from "../contexts/NFTContext";
-import NFTCard from "./nftCard";
+
 import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
 import { NFTDataType, NFTItemsType } from "../types/nftType";
-import NftCardV2 from "./nftCardV2";
+import NftCardV2 from "./nftCard/nftCardV2";
 
 export default function NftCards() {
   const {

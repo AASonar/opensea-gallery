@@ -4,10 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Grid, CardActionArea, Grow } from "@mui/material";
-import getWebMetadata from "../axios/getWebMetadata";
+import getWebMetadata from "../../axios/getWebMetadata";
 import { useEffect, useState } from "react";
-import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import { NFTDataType } from "../types/nftType";
+import { TezosNFTDetails } from "../../types/tezos/tezosNFTType";
+import { NFTDataType } from "../../types/nftType";
 
 interface NFTDataTypeProps extends NFTDataType {
   timeout: number;

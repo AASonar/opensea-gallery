@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NFTDataType } from "../types/nftType";
+import { NFTDataType } from "../../types/nftType";
 
 interface NFTDataTypeProps extends NFTDataType {
   timeout: number;
