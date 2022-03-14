@@ -29,10 +29,10 @@ export default function UpdateUserDialog({ userData }: any) {
 
   const [user, setUser] = useState<User>(userData);
   const walletData = SelectUserWalletByID(user.user_id);
-  const [wallet, setWallet] = useState<Wallet[]>(walletData);
+  // const [wallet, setWallet] = useState<Wallet[]>(walletData);
 
   const handleClickOpen = () => {
-    setWallet(walletData);
+    // setWallet(walletData);
     setOpen(true);
   };
 
@@ -42,7 +42,7 @@ export default function UpdateUserDialog({ userData }: any) {
 
   const handleUpdate = () => {
     UpdateUser(user);
-    wallet.forEach((w) => UpdateWallet(w));
+    // wallet.forEach((w) => UpdateWallet(w));
     // UpdateUserWallet();
     setOpen(false);
   };
@@ -56,7 +56,7 @@ export default function UpdateUserDialog({ userData }: any) {
       <Button variant="outlined" onClick={handleClickOpen}>
         Edit
       </Button>
-      {user && wallet && (
+      {user && (
         <Dialog
           open={open}
           onClose={handleClose}
@@ -97,7 +97,7 @@ export default function UpdateUserDialog({ userData }: any) {
                 }
               />
             </Grid>
-            {wallet?.map((address: any, i: number) => (
+            {/* {wallet?.map((address: any, i: number) => (
               //wrap in component
               <Grid key={i} item xs={10}>
                 <FormControl
@@ -128,13 +128,13 @@ export default function UpdateUserDialog({ userData }: any) {
                   label="Wallet Address"
                   value={address.address}
                   onChange={(val) => {
-                    const newWallet = [...wallet];
-                    newWallet[i].address = val.target.value;
-                    setWallet(newWallet);
+                    // const newWallet = [...wallet];
+                    // newWallet[i].address = val.target.value;
+                    // setWallet(newWallet);
                   }}
                 />
               </Grid>
-            ))}
+            ))} */}
           </Grid>
           {/* <DialogContentText id="alert-dialog-description">
             </DialogContentText> */}

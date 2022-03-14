@@ -8,6 +8,7 @@ import NFTCard from "./nftCard";
 import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
 import { NFTDataType, NFTItemsType } from "../types/nftType";
+import NftCardV2 from "./nftCardV2";
 
 export default function NftCards() {
   const {
@@ -35,7 +36,12 @@ export default function NftCards() {
       {(nftItemsData ?? []).map((item) =>
         item.nft_data?.map((params, i) => (
           <Grid item key={i} xs={3}>
-            <NFTCard
+            {/* <NFTCard
+              {...params}
+              timeout={i * 200}
+              contract_address={item.contract_address}
+            /> */}
+            <NftCardV2
               {...params}
               timeout={i * 200}
               contract_address={item.contract_address}
