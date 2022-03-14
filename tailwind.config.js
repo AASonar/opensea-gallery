@@ -4,7 +4,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        monda: ["Monda, sans-serif"],
+        workSans: ["'Work Sans', sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

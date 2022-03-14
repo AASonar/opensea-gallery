@@ -9,6 +9,7 @@ import { TezosNFTContext } from "../contexts/TezosNFTContext";
 import TezosNFTCard from "./tezosNftCard";
 import { NFTDataType, NFTItemsType } from "../types/nftType";
 import NftCardV2 from "./nftCard/nftCardV2";
+import NftArtCard from "./nftArtCard";
 
 export default function NftCards() {
   const {
@@ -41,7 +42,12 @@ export default function NftCards() {
               timeout={i * 200}
               contract_address={item.contract_address}
             /> */}
-            <NftCardV2
+            {/* <NftCardV2
+              {...params}
+              timeout={i * 200}
+              contract_address={item.contract_address}
+            /> */}
+            <NftArtCard
               {...params}
               timeout={i * 200}
               contract_address={item.contract_address}

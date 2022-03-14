@@ -3,11 +3,20 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Monda&family=Work+Sans&display=swap");
 
+@font-face {
+  src: url("https://fonts.googleapis.com/css2?family=Monda&display=swap");
+  font-family: "Monda, sans-serif";
+}
+@font-face {
+  src: url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+  font-family: "'Work Sans', sans-serif";
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Monda', sans-serif, 'Work Sans', sans-serif;
+  font-family: "Monda", sans-serif, "Work Sans", sans-serif;
 }
 
 a {
