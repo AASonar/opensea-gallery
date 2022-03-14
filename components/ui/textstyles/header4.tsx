@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
-const Header4:FC = ({children}) => {
+const Header4: FC = ({ children }) => {
   return (
-    <div family-name="Monda, sans-serif" className="text-lg font-bold leading-none text-white">{children}</div>
-  )
-}
+    <div className="font-monda text-lg font-bold leading-none text-white">
+      {children}
+    </div>
+  );
+};
 
-export default Header4
+export default Header4;
