@@ -43,7 +43,7 @@ export default function NftArtCard({
             <img className="w-full flex-1 rounded" src={image_512}/>
             <div className="inline-flex space-x-1 items-start justify-end w-full">
         <div className="flex-1"><Header4>{name}</Header4></div>
-        <div className="flex items-center justify-start px-2 py-1 bg-gray-600 border rounded-full border-indigo-500">
+        <div className="flex">
             <Chip2>Platform</Chip2>
         </div>
         </div>
