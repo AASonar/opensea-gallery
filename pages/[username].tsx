@@ -16,8 +16,13 @@ import { AddressContext } from "../components/contexts/AddressContext";
 import { TezosNFTType } from "../components/types/tezos/tezosNFTType";
 import { Grid } from "@mui/material";
 import AccCard from "../components/ui/accCard";
+import FetchTokenBalance from "../components/covalentAPI/fetchTokenBalance";
+import { useRouter } from "next/router";
+import { useQuery, useQueryClient } from "react-query";
+import getUserData from "../components/axios/getUserData";
+import axios from "axios";
 
-const Home: NextPage = () => {
+const User: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =
     useContext(AddressContext);
 
@@ -25,6 +30,36 @@ const Home: NextPage = () => {
   const [nftItemsData, setNftItemsData] = useState<NFTItemsType[]>();
   const [nftData, setNftData] = useState<NFTDataType[]>();
 
+  const router = useRouter();
+  const { username } = router.query;
+
+  const queryClient = useQueryClient();
+  const { data, status, error } = useQuery(
+    "user",
+    async () => await getUserData(username),
+    {
+      enabled: !!username,
+    }
+  );
+
+  if (username) {
+    console.log(data);
+    console.log(data?.wallets[0]);
+  }
+
+  function userSelector() {
+    // setAddress!(user);
+    if (data) {
+      FetchTokenBalance(data.wallets[0].chainId, data.wallets[0].address)
+        .then((nftData: any) => {
+          // setNftBaseData!(null);
+          setNftBaseData!(nftData);
+        })
+        .catch((err) => {});
+    }
+  }
+
+  userSelector();
   return (
     <div className={styles.container}>
       {/* <Script src="https://unpkg.com/moralis/dist/moralis.js"></Script> */}
@@ -45,8 +80,6 @@ const Home: NextPage = () => {
         </Head>
 
         <main className={styles.main}>
-          <AddressForm></AddressForm>
-          <h1>{address}</h1>
           <Grid container spacing={2}>
             <Grid item>{<AccCard />}</Grid>
             <Grid item xs={9}>
@@ -77,4 +110,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default User;

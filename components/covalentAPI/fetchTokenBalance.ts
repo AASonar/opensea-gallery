@@ -5,7 +5,7 @@ const FetchTokenBalance = async (
   address: string,
   currency: string = "USD"
 ) => {
-  //const corsUrl = "https://noki-cors.herokuapp.com";
+  const corsUrl = "https://noki-cors.herokuapp.com";
 
   const apiUrl = `https://api.covalenthq.com/v1/${chain_id}/address/${address}/balances_v2`;
   const query = `?quote-currency=${currency}&format=JSON&nft=true&no-nft-fetch=false&key=${process.env.COVALENT_API_KEY}`;

@@ -6,27 +6,31 @@ import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { Provider } from "react-supabase";
 import { supabaseClient } from "../components/dashboard/supabase/supabaseDetails";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chain_id, setChain_id] = useState("1");
   const [address, setAddress] = useState("");
   const [isSubmitAddress, setIsSubmitAddress] = useState(false);
 
+  const queryClient = new QueryClient();
   return (
-    <Provider value={supabaseClient}>
-      <AddressContext.Provider
-        value={{
-          chain_id,
-          setChain_id,
-          address,
-          setAddress,
-          isSubmitAddress,
-          setIsSubmitAddress,
-        }}
-      >
-        <Component {...pageProps} />
-      </AddressContext.Provider>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider value={supabaseClient}>
+        <AddressContext.Provider
+          value={{
+            chain_id,
+            setChain_id,
+            address,
+            setAddress,
+            isSubmitAddress,
+            setIsSubmitAddress,
+          }}
+        >
+          <Component {...pageProps} />
+        </AddressContext.Provider>
+      </Provider>
+    </QueryClientProvider>
   );
 }
 
