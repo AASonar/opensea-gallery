@@ -21,6 +21,8 @@ import { useRouter } from "next/router";
 import { useQuery, useQueryClient } from "react-query";
 import getUserData from "../components/axios/getUserData";
 import axios from "axios";
+import Profile from "../components/ui/profile";
+import NavBar from "../components/ui/navbar";
 
 const User: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =
@@ -85,15 +87,26 @@ const User: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
+        <NavBar />
         {NFTStatus === "success" ? (
-          <main className={styles.main}>
+          <div>
+            <div style={{ marginBottom: "20rem" }}>
+              <img
+                className="bannercover object-cover w-full h-full"
+                alt={data.username + " Cover Picture"}
+                style={{ height: 381 }}
+                src={data.coverPhotoUrl}
+              />
+              <Profile userData={data} />
+            </div>
+
             <Grid container spacing={2}>
               <Grid item>{NFTCards ?? <AccCard />}</Grid>
               <Grid item xs={9}>
                 {data && <NftCards></NftCards>}
               </Grid>
             </Grid>
-          </main>
+          </div>
         ) : (
           <></>
         )}

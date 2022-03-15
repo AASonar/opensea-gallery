@@ -28,7 +28,7 @@ export default function NftArtCard({
     setTimeout(() => {
       setIsImageLoaded(true);
     }, timeout);
-  }, []);
+  }, [timeout]);
 
   function handleClick(contract_address: string, token_id: string) {
     window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);
@@ -63,13 +63,17 @@ export default function NftArtCard({
           <Chip2>Platform</Chip2>
         </div>
       </div>
-      <div className="tracking-wide">
+      <div className="tracking-wide w-20 truncate">
         <Subheader2>{original_owner}</Subheader2>
       </div>
       <div className="flex flex-col items-end justify-end w-full">
         <div className="inline-flex space-x-2.5 items-center justify-end">
           <div className="flex space-x-1 items-start justify-start">
-            <img className="w-6 h-6" src="https://via.placeholder.com/24x24" />
+            <img
+              className="w-6 h-6"
+              src="https://via.placeholder.com/24x24"
+              alt="Crypto Symbol"
+            />
             <div className="tracking-wider leading-relaxed">
               <Header5>0.31</Header5>
             </div>
