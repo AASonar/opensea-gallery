@@ -42,11 +42,6 @@ const User: NextPage = () => {
     }
   );
 
-  if (username) {
-    console.log(data);
-    console.log(data?.wallets[0]);
-  }
-
   function userSelector() {
     // setAddress!(user);
     if (data) {
@@ -59,7 +54,18 @@ const User: NextPage = () => {
     }
   }
 
-  userSelector();
+  const {
+    data: NFTCards,
+    status: NFTStatus,
+    error: NFTError,
+  } = useQuery("nftCards", async () => await userSelector(), {
+    enabled: !!data,
+  });
+
+  if (NFTStatus === "loading") {
+    return <span>Loading...</span>;
+  }
+
   return (
     <div className={styles.container}>
       {/* <Script src="https://unpkg.com/moralis/dist/moralis.js"></Script> */}
@@ -79,14 +85,18 @@ const User: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
-          <Grid container spacing={2}>
-            <Grid item>{<AccCard />}</Grid>
-            <Grid item xs={9}>
-              {nftBaseData && <NftCards></NftCards>}
+        {NFTStatus === "success" ? (
+          <main className={styles.main}>
+            <Grid container spacing={2}>
+              <Grid item>{NFTCards ?? <AccCard />}</Grid>
+              <Grid item xs={9}>
+                {data && <NftCards></NftCards>}
+              </Grid>
             </Grid>
-          </Grid>
-        </main>
+          </main>
+        ) : (
+          <></>
+        )}
 
         <footer className={styles.footer}>
           <a
