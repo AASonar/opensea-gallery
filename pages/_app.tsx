@@ -7,6 +7,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Provider } from "react-supabase";
 import { supabaseClient } from "../components/dashboard/supabase/supabaseDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chain_id, setChain_id] = useState("1");

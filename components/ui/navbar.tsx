@@ -4,10 +4,7 @@ const NavBar: FC = ({ children }) => {
   return (
     <div className="navbar w-full inline-flex space-x-80 items-center justify-between px-24 py-5 bg-gray-700 shadow">
       <div className="logo flex space-x-2.5 items-center justify-center">
-        <img
-          className="cube1 w-8 h-full"
-          src="https://via.placeholder.com/33x33"
-        />
+        <img className="cube1 w-8 h-full" src="cube.svg" />
         <p className="THEBLOCK text-sm font-bold text-blue-300">THE BLOCK</p>
       </div>
       <div

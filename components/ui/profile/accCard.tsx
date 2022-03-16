@@ -5,9 +5,9 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea, Grow, ListItemText } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import { List } from "@mui/material";
-import { NFTBaseContext } from "../contexts/NFTContext";
-import { NFTItemsType } from "../types/nftType";
-import NftImage from "./nftImage";
+import { NFTBaseContext } from "../../contexts/NFTContext";
+import { NFTItemsType } from "../../types/nftType";
+import NftImage from "../nftImage";
 import { useSelect } from "react-supabase";
 
 export default function AccCard() {

@@ -15,7 +15,7 @@ import {
 import { AddressContext } from "../components/contexts/AddressContext";
 import { TezosNFTType } from "../components/types/tezos/tezosNFTType";
 import { Grid } from "@mui/material";
-import AccCard from "../components/ui/accCard";
+import AccCard from "../components/ui/profile/accCard";
 
 const Home: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =

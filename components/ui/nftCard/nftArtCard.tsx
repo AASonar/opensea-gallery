@@ -1,10 +1,10 @@
 import * as React from "react";
-import { NFTDataType } from "../types/nftType";
+import { NFTDataType } from "../../types/nftType";
 import { useEffect, useState } from "react";
-import Chip2 from "./chip2";
-import Header4 from "./textstyles/header4";
-import Header5 from "./textstyles/header5";
-import Subheader2 from "./textstyles/subheader2";
+import Chip2 from "../textstyles/chip2";
+import Header4 from "../textstyles/header4";
+import Header5 from "../textstyles/header5";
+import Subheader2 from "../textstyles/subheader2";
 import CardMedia from "@mui/material/CardMedia";
 import { Card, CardActionArea, Grow } from "@mui/material";
 
@@ -69,11 +69,7 @@ export default function NftArtCard({
       <div className="flex flex-col items-end justify-end w-full">
         <div className="inline-flex space-x-2.5 items-center justify-end">
           <div className="flex space-x-1 items-start justify-start">
-            <img
-              className="w-6 h-6"
-              src="https://via.placeholder.com/24x24"
-              alt="Crypto Symbol"
-            />
+            <img className="w-6 h-6" src="ethereum-1.svg" alt="Crypto Symbol" />
             <div className="tracking-wider leading-relaxed">
               <Header5>0.31</Header5>
             </div>

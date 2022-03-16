@@ -15,14 +15,15 @@ import {
 import { AddressContext } from "../components/contexts/AddressContext";
 import { TezosNFTType } from "../components/types/tezos/tezosNFTType";
 import { Grid } from "@mui/material";
-import AccCard from "../components/ui/accCard";
+import AccCard from "../components/ui/profile/accCard";
 import FetchTokenBalance from "../components/covalentAPI/fetchTokenBalance";
 import { useRouter } from "next/router";
 import { useQuery, useQueryClient } from "react-query";
 import getUserData from "../components/axios/getUserData";
 import axios from "axios";
-import Profile from "../components/ui/profile";
+import Profile from "../components/ui/profile/profile";
 import NavBar from "../components/ui/navbar";
+import SortingSelection from "../components/ui/sorting/sortingSelection";
 
 const User: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =
@@ -99,7 +100,7 @@ const User: NextPage = () => {
               />
               <Profile userData={data} />
             </div>
-
+            <SortingSelection />
             <Grid container spacing={2}>
               <Grid item>{NFTCards ?? <AccCard />}</Grid>
               <Grid item xs={9}>
