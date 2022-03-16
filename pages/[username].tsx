@@ -100,8 +100,11 @@ const User: NextPage = () => {
               />
               <Profile userData={data} />
             </div>
-            <SortingSelection />
+
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <SortingSelection />
+              </Grid>
               <Grid item>{NFTCards ?? <AccCard />}</Grid>
               <Grid item xs={9}>
                 {data && <NftCards></NftCards>}

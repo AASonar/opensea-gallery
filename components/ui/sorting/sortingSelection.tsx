@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function SortingSelection() {
   return (
     <div
@@ -32,10 +34,10 @@ export default function SortingSelection() {
           </p>
           <div className="options flex space-x-3 items-start justify-start">
             <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />
             </p>
             <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "arrow-down-9-1"]} />
             </p>
           </div>
         </div>
@@ -44,9 +46,11 @@ export default function SortingSelection() {
             NAME
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" text-2xl tracking-wider leading-9 text-white"></p>
+            <p className=" text-2xl tracking-wider leading-9 text-white">
+              <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
+            </p>
             <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
             </p>
           </div>
         </div>
@@ -56,10 +60,10 @@ export default function SortingSelection() {
           </p>
           <div className="options flex space-x-3 items-start justify-start">
             <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
             </p>
             <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
             </p>
           </div>
         </div>
@@ -68,14 +72,18 @@ export default function SortingSelection() {
             LAYOUT
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" text-2xl tracking-wider leading-9 text-white"></p>
+            <p className=" text-2xl tracking-wider leading-9 text-white">
+              <FontAwesomeIcon icon={["fas", "border-all"]} />
+            </p>
             <p className=" opacity-50 text-2xl font-solid tracking-wider leading-9 text-white">
-              
+              <FontAwesomeIcon icon={["fas", "grip"]} />
             </p>
           </div>
         </div>
         <div className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4 py-2.5 bg-gray-800 border rounded-full border-gray-600">
-          <p className=" text-sm text-blue-300"></p>
+          <p className=" text-sm text-blue-300">
+            <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
+          </p>
           <p className="Searchcollection... opacity-50 text-sm tracking-wider leading-tight text-white">
             Search collection...
           </p>

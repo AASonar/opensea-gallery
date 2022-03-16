@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 
 const NavBar: FC = ({ children }) => {
@@ -12,7 +13,9 @@ const NavBar: FC = ({ children }) => {
         style={{ width: 489, height: 37 }}
       >
         <div className="searchbar flex space-x-2.5 items-center justify-start w-72 px-4 py-2.5 bg-gray-800 border rounded-full border-gray-600">
-          <p className=" text-sm text-blue-300"></p>
+          <p className=" text-sm text-blue-300">
+            <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
+          </p>
           <p className="Search... opacity-50 text-xs font-medium text-white">
             Search...
           </p>

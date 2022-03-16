@@ -16,7 +16,7 @@ function Profile({ userData }: any) {
         />
         <div className="chip inline-flex space-x-2 items-center justify-start px-2 py-1 bg-yellow-200 border rounded-full border-yellow-300">
           <p className=" text-sm tracking-wider leading-tight text-gray-800">
-            
+            <FontAwesomeIcon icon={["fas", "award"]} />
           </p>
           <p className="TOPCOLLECTOR text-xs font-semibold tracking-wide leading-none text-gray-800">
             TOP 1 COLLECTOR
@@ -77,7 +77,7 @@ function Profile({ userData }: any) {
         >
           <div className="bio flex space-x-1 items-center justify-start">
             <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
-              
+              <FontAwesomeIcon icon={["fas", "wallet"]} />
             </p>
             <div className="amount h-full">
               <p className="name text-sm tracking-wider leading-tight text-white">
@@ -87,7 +87,7 @@ function Profile({ userData }: any) {
           </div>
           <div className="bio flex space-x-1 items-center justify-start">
             <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
-              
+              <FontAwesomeIcon icon={["fas", "link"]} />
             </p>
             <div className="amount h-full">
               <p className="name text-sm tracking-wider leading-tight text-white">
