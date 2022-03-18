@@ -34,7 +34,7 @@ const User: NextPage = () => {
   const [nftData, setNftData] = useState<NFTDataType[]>();
 
   const router = useRouter();
-  const { username } = router.query;
+  const { username, wallet = "0" } = router.query;
 
   const queryClient = useQueryClient();
   const { data, status, error } = useQuery(
@@ -47,8 +47,12 @@ const User: NextPage = () => {
 
   function userSelector() {
     // setAddress!(user);
-    if (data) {
-      FetchTokenBalance(data.wallets[0].chainId, data.wallets[0].address)
+    if (data && wallet) {
+      console.log(data.wallets[+wallet]);
+      FetchTokenBalance(
+        data.wallets[+wallet].chainId,
+        data.wallets[+wallet].address
+      )
         .then((nftData: any) => {
           // setNftBaseData!(null);
           setNftBaseData!(nftData);
@@ -105,7 +109,7 @@ const User: NextPage = () => {
               <Grid item xs={12}>
                 <SortingSelection />
               </Grid>
-              <Grid item>{NFTCards ?? <AccCard />}</Grid>
+              <Grid item>{<AccCard />}</Grid>
               <Grid item xs={9}>
                 {data && <NftCards></NftCards>}
               </Grid>

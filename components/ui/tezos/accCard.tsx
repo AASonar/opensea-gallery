@@ -23,7 +23,7 @@ export default function AccCard() {
         setAccDetails(details);
       });
     }
-  }, [isSubmitAddress, setIsSubmitAddress]);
+  }, [isSubmitAddress, setIsSubmitAddress, address]);
 
   //const { alias, balance, tokenBalancesCount, lastActivityTime } = accDetails;
 
