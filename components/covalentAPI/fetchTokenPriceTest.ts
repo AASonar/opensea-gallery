@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const FetchTokenPrice = async (
+const FetchTokenPriceTest = async (
   chain_id: string,
   address: string,
   token_id: string
@@ -8,7 +8,7 @@ const FetchTokenPrice = async (
   const corsUrl = "https://noki-cors.herokuapp.com";
 
   // const apiUrl = `https://api.covalenthq.com/v1/${chain_id}/address/${address}/balances_v2`;
-  const apiUrl = `https://api.covalenthq.com/v1/${chain_id}/tokens/${address}/nft_transactions/${token_id}`;
+  const apiUrl = `https://api.covalenthq.com/v1/${chain_id}/tokens/${address}/nft_metadata/${token_id}`;
 
   // const query = `?quote-currency=${currency}&format=JSON&nft=true&no-nft-fetch=false&key=${process.env.COVALENT_API_KEY}`;
   const query = `?key=${process.env.COVALENT_API_KEY}`;
@@ -20,19 +20,18 @@ const FetchTokenPrice = async (
     },
   });
 
-  const { data: dataRoot, status } = response;
+  const { data, status } = response;
 
-  const { data: dataInside } = dataRoot;
+  const { data: data2 } = data;
 
-  const { items } = dataInside;
+  const { items: data_inside } = data2;
 
-  if (dataRoot.error === false) {
-    const transactions = items[0].nft_transactions[0];
-    console.log(transactions);
-    return transactions;
+  if (data.error === false) {
+    console.log(data_inside);
+    return data_inside;
   }
 
   return Promise.reject(response);
 };
 
-export default FetchTokenPrice;
+export default FetchTokenPriceTest;

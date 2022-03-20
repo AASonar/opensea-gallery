@@ -4,11 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Grid, CardActionArea, Grow } from "@mui/material";
-import getWebMetadata from "../axios/getWebMetadata";
+import getWebMetadata from "../../axios/getWebMetadata";
 import { useEffect, useState } from "react";
-import { TezosNFTDetails } from "../types/tezos/tezosNFTType";
-import getMarketLink, { MarketLinkProps } from "../utils/getMarketLink";
-import GetCreatorAlias from "../utils/getCreatorAlias";
+import { TezosNFTDetails } from "../../types/tezos/tezosNFTType";
+import getMarketLink, { MarketLinkProps } from "../../utils/getMarketLink";
+import GetCreatorAlias from "../../utils/getCreatorAlias";
 
 interface TezosNFTCardProps extends TezosNFTDetails {
   timeout: number;

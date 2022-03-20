@@ -9,6 +9,7 @@ import { NFTBaseContext } from "../../contexts/NFTContext";
 import { NFTItemsType } from "../../types/nftType";
 import NftImage from "../nftImage";
 import { useSelect } from "react-supabase";
+import convertBalance from "../../utils/convertBalance";
 
 export default function AccCard() {
   const {
@@ -36,13 +37,6 @@ export default function AccCard() {
 
   function handleClick(profileID: string) {
     window.open(`https://opensea.io/${profileID}`);
-  }
-
-  function convertBalance(balance: number): string {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(balance);
   }
 
   return (

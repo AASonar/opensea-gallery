@@ -7,10 +7,16 @@ import Header5 from "../textstyles/header5";
 import Subheader2 from "../textstyles/subheader2";
 import CardMedia from "@mui/material/CardMedia";
 import { Card, CardActionArea, Grow } from "@mui/material";
+import FetchTokenPrice from "../../covalentAPI/fetchTokenPrice";
+import { NFTTransaction } from "../../types/nftTransaction";
+import convertBalance from "../../utils/convertBalance";
+import convertDecimals from "../../utils/convertDecimals";
 
 interface NFTDataTypeProps extends NFTDataType {
   timeout: number;
   contract_address: string;
+  contract_decimals: number;
+  chain_id: string;
 }
 
 export default function NftArtCard({
@@ -21,12 +27,18 @@ export default function NftArtCard({
   token_id,
   timeout,
   contract_address,
+  contract_decimals,
+  chain_id,
 }: NFTDataTypeProps) {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  const [nftPrice, setNftPrice] = useState<NFTTransaction>();
 
   useEffect(() => {
     setTimeout(() => {
       setIsImageLoaded(true);
+      FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
+        setNftPrice(i)
+      );
     }, timeout);
   }, [timeout]);
 
@@ -69,13 +81,24 @@ export default function NftArtCard({
       <div className="flex flex-col items-end justify-end w-full">
         <div className="inline-flex space-x-2.5 items-center justify-end">
           <div className="flex space-x-1 items-start justify-start">
-            <img className="w-6 h-6" src="ethereum-1.svg" alt="Crypto Symbol" />
+            {nftPrice && (
+              <img
+                className="w-6 h-6"
+                src="ethereum-1.svg"
+                alt="Crypto Symbol"
+              />
+            )}
             <div className="tracking-wider leading-relaxed">
-              <Header5>0.31</Header5>
+              <Header5>
+                {nftPrice &&
+                  convertDecimals(+nftPrice?.value ?? 0, contract_decimals, 4)}
+              </Header5>
             </div>
           </div>
           <div className="tracking-wider leading-relaxed">
-            <Header5>$3000</Header5>
+            <Header5>
+              {nftPrice && convertBalance(nftPrice?.value_quote ?? 0)}
+            </Header5>
           </div>
         </div>
       </div>

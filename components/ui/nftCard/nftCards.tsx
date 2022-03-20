@@ -6,7 +6,7 @@ import { useEffect, useState, useContext } from "react";
 import { NFTBaseContext } from "../../contexts/NFTContext";
 
 import { TezosNFTContext } from "../../contexts/TezosNFTContext";
-import TezosNFTCard from "../tezosNftCard";
+import TezosNFTCard from "./tezosNftCard";
 import { NFTDataType, NFTItemsType } from "../../types/nftType";
 import NftArtCard from "./nftArtCard";
 
@@ -29,6 +29,9 @@ export default function NftCards() {
         nftBaseData?.items.filter((item) => item.type === "nft")
       );
     }
+    if (nftItemsData) {
+      console.log(nftItemsData);
+    }
   }, [nftBaseData]);
 
   return (
@@ -50,6 +53,8 @@ export default function NftCards() {
               {...params}
               timeout={i * 200}
               contract_address={item.contract_address}
+              contract_decimals={item.contract_decimals}
+              chain_id={JSON.stringify(nftBaseData?.chain_id)}
             />
           </Grid>
         ))
