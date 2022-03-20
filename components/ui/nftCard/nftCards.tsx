@@ -29,9 +29,6 @@ export default function NftCards() {
         nftBaseData?.items.filter((item) => item.type === "nft")
       );
     }
-    if (nftItemsData) {
-      console.log(nftItemsData);
-    }
   }, [nftBaseData]);
 
   return (

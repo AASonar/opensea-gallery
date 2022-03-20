@@ -111,7 +111,7 @@ const User: NextPage = () => {
               </Grid>
               <Grid item>{<AccCard />}</Grid>
               <Grid item xs={9}>
-                {data && <NftCards></NftCards>}
+                {NftCards && <NftCards />}
               </Grid>
             </Grid>
           </div>
