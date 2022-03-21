@@ -2,6 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { relative } from "path/posix";
 import React, { FC } from "react";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { IconButton } from "@mui/material";
+
+function handleTwitter(handle: string) {
+  window.open(`https://twitter.com/${handle}`);
+}
+
+function handleInstagram(handle: string) {
+  window.open(`https://instagram.com/${handle}`);
+}
+
+function handleEmail(handle: string) {
+  window.open(`mailto:${handle}?subject=Contacted from The Block`);
+}
+
 function Profile({ userData }: any) {
   return (
     <div
@@ -41,19 +55,35 @@ function Profile({ userData }: any) {
           </div>
           <div className="socials flex space-x-2 items-center justify-center">
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full p-5 rounded-full">
-              <p className=" text-2xl tracking-wider leading-9 text-blue-300">
-                <FontAwesomeIcon icon={["fab", "twitter"]} />
-              </p>
+              <IconButton
+                size="medium"
+                onClick={() => handleTwitter(userData.twitterHandle ?? "")}
+              >
+                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                  <FontAwesomeIcon icon={["fab", "twitter"]} />
+                </p>
+              </IconButton>
             </div>
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full px-5 py-2.5 rounded-full">
-              <p className=" text-2xl tracking-wider leading-9 text-blue-300">
-                <FontAwesomeIcon icon={["fab", "instagram"]} />
-              </p>
+              <IconButton
+                size="medium"
+                onClick={() => handleInstagram(userData.instagramHandle ?? "")}
+              >
+                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                  <FontAwesomeIcon icon={["fab", "instagram"]} />
+                </p>
+              </IconButton>
             </div>
+
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full px-5 py-2.5 rounded-full">
-              <p className=" text-2xl tracking-wider leading-9 text-blue-300">
-                <FontAwesomeIcon icon={["fas", "envelope"]} />
-              </p>
+              <IconButton
+                size="medium"
+                onClick={() => handleEmail(userData.email ?? "")}
+              >
+                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                  <FontAwesomeIcon icon={["fas", "envelope"]} />
+                </p>
+              </IconButton>
             </div>
           </div>
         </div>

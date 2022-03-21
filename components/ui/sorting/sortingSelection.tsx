@@ -1,6 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icon, IconButton } from "@mui/material";
+import { useContext, useReducer, useState } from "react";
+import CardViewReducer from "../../reducers/cardViewReducer";
+import { CardViewContext } from "../../contexts/CardViewContext";
 
 export default function SortingSelection() {
+  const { cardView, setCardView } = useContext(CardViewContext);
+
+  function handleDetailedView() {
+    if (setCardView) {
+      setCardView("detailed");
+    }
+  }
+
+  function handleArtView() {
+    if (setCardView) {
+      setCardView("art");
+    }
+  }
   return (
     <div
       className="sectionheader inline-flex flex-col space-y-6 items-start justify-center"
@@ -33,12 +50,16 @@ export default function SortingSelection() {
             VALUE
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />
-            </p>
-            <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-9-1"]} />
-            </p>
+            <IconButton size="small">
+              <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />
+              </p>
+            </IconButton>
+            <IconButton size="small">
+              <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-9-1"]} />
+              </p>
+            </IconButton>
           </div>
         </div>
         <div className="filteritem flex space-x-2 items-center justify-center">
@@ -46,12 +67,16 @@ export default function SortingSelection() {
             NAME
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
-            </p>
-            <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
-            </p>
+            <IconButton size="small">
+              <p className=" text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
+              </p>
+            </IconButton>
+            <IconButton size="small">
+              <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
+              </p>
+            </IconButton>
           </div>
         </div>
         <div className="filteritem flex space-x-2 items-center justify-center">
@@ -59,12 +84,16 @@ export default function SortingSelection() {
             CREATOR
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
-            </p>
-            <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
-            </p>
+            <IconButton size="small">
+              <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
+              </p>
+            </IconButton>
+            <IconButton size="small">
+              <p className=" opacity-50 text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
+              </p>
+            </IconButton>
           </div>
         </div>
         <div className="filteritem flex space-x-2 items-center justify-center">
@@ -72,12 +101,16 @@ export default function SortingSelection() {
             LAYOUT
           </p>
           <div className="options flex space-x-3 items-start justify-start">
-            <p className=" text-2xl tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "border-all"]} />
-            </p>
-            <p className=" opacity-50 text-2xl font-solid tracking-wider leading-9 text-white">
-              <FontAwesomeIcon icon={["fas", "grip"]} />
-            </p>
+            <IconButton size="small" onClick={() => handleDetailedView()}>
+              <p className=" text-2xl tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "border-all"]} />
+              </p>
+            </IconButton>
+            <IconButton size="small" onClick={() => handleArtView()}>
+              <p className=" opacity-50 text-2xl font-solid tracking-wider leading-9 text-white">
+                <FontAwesomeIcon icon={["fas", "grip"]} />
+              </p>
+            </IconButton>
           </div>
         </div>
         <div className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4 py-2.5 bg-gray-800 border rounded-full border-gray-600">
