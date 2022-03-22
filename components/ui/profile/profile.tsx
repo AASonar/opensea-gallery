@@ -7,6 +7,7 @@ import { ActionIcon, Avatar, Button, Tooltip } from "@mantine/core";
 import { Image } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { Text } from "@mantine/core";
+import { Badge } from "@mantine/core";
 
 function handleTwitter(handle: string) {
   window.open(`https://twitter.com/${handle}`);
@@ -43,15 +44,16 @@ function Profile({ userData, wallet }: any) {
           alt={userData.username + " Profile Picture"}
           src={userData.profilePhotoUrl}
         />
-
-        <div className="chip inline-flex space-x-2 items-center justify-start px-2 py-1 bg-yellow-200 border rounded-full border-yellow-300">
-          <p className=" text-sm tracking-wider leading-tight text-gray-800">
-            <FontAwesomeIcon icon={["fas", "award"]} />
-          </p>
-          <p className="TOPCOLLECTOR text-xs font-semibold tracking-wide leading-none text-gray-800">
-            TOP 1 COLLECTOR
-          </p>
-        </div>
+        <Badge size="lg" className="bg-yellow-200">
+          <div className="chip inline-flex space-x-2 items-center justify-start px-2 py-1">
+            <p className=" text-sm tracking-wider leading-tight text-gray-800">
+              <FontAwesomeIcon icon={["fas", "award"]} />
+            </p>
+            <p className="TOPCOLLECTOR text-xs font-workSans font-bold tracking-wide leading-none text-gray-800">
+              TOP 1 COLLECTOR
+            </p>
+          </div>
+        </Badge>
       </div>
       <div
         className="userdetails inline-flex flex-col space-y-4 items-start justify-start pt-20"
@@ -97,7 +99,7 @@ function Profile({ userData, wallet }: any) {
                 onClick={() => handleEmail(userData.email ?? "")}
               >
                 <p className=" text-2xl tracking-wider leading-9 text-blue-300">
-                  <FontAwesomeIcon icon={["fas", "envelope"]} />
+                  <FontAwesomeIcon icon={["far", "envelope"]} />
                 </p>
               </ActionIcon>
             </div>

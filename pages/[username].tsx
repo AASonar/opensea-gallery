@@ -34,6 +34,8 @@ import {
   Center,
   Space,
   Group,
+  SimpleGrid,
+  Card,
 } from "@mantine/core";
 import { Skeleton } from "@mantine/core";
 
@@ -112,9 +114,7 @@ const User: NextPage = () => {
           <NavBar />
 
           {userStatus === "loading" ? (
-            <div>
-              <Skeleton>sds</Skeleton>
-            </div>
+            <Skeleton style={{ backgroundColor: "red" }}></Skeleton>
           ) : (
             <></>
           )}
@@ -134,11 +134,17 @@ const User: NextPage = () => {
               <Center>
                 <SortingSelection />
               </Center>
-              <Space h="md" />
+              <Space h="xl" />
               {/* {<AccCard />} */}
-              {NFTStatus === "loading" ? <Skeleton> nice</Skeleton> : <></>}
-
-              {NFTStatus === "success" ? (
+              {NFTStatus === "loading" ? (
+                <Skeleton className="bg-inherit">
+                  <SimpleGrid cols={3} spacing="sm">
+                    <Skeleton height={500} />
+                    <Skeleton height={500} />
+                    <Skeleton height={500} />
+                  </SimpleGrid>
+                </Skeleton>
+              ) : NFTStatus === "success" ? (
                 <Container size="xl">{NftCards && <NftCards />}</Container>
               ) : (
                 <></>

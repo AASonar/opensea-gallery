@@ -12,15 +12,12 @@ import { Input } from "@mantine/core";
 
 export default function SortingSelection() {
   const { cardView = "detailed", setCardView } = useContext(CardViewContext);
-  const [orderValue, setOrderValue] = useState("react");
-  const [viewValue, setViewValue] = useState("react");
+  const [orderValue, setOrderValue] = useState("latest");
+  const [viewValue, setViewValue] = useState("detailed");
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <div
-      className="sectionheader inline-flex flex-col space-y-6 items-start justify-center"
-      style={{ width: 1080, height: 90 }}
-    >
+    <div className="sectionheader inline-flex flex-col space-y-6 items-start justify-center">
       <Tabs>
         <Tabs.Tab
           label={
@@ -47,7 +44,7 @@ export default function SortingSelection() {
 
       <Container
         className="filters inline-flex space-x-6 items-center justify-end"
-        style={{ width: 1080, height: 41 }}
+        style={{ width: 1080, height: 40 }}
       >
         <div className="filteritem flex space-x-2 items-center justify-center">
           <SegmentedControl
@@ -56,6 +53,18 @@ export default function SortingSelection() {
             value={orderValue}
             onChange={setOrderValue}
             data={[
+              {
+                value: "latest",
+                label: (
+                  <FontAwesomeIcon icon={["fas", "arrow-down-short-wide"]} />
+                ),
+              },
+              {
+                value: "oldest",
+                label: (
+                  <FontAwesomeIcon icon={["fas", "arrow-down-wide-short"]} />
+                ),
+              },
               {
                 value: "1-9",
                 label: <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />,

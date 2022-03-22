@@ -16,6 +16,7 @@ import {
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -26,7 +27,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
   library.add(
     fab as unknown as IconDefinition,
-    fas as unknown as IconDefinition
+    fas as unknown as IconDefinition,
+    far as unknown as IconDefinition
   );
 
   const theme = createTheme({
