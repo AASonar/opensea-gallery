@@ -3,16 +3,18 @@ import { Icon, IconButton } from "@mui/material";
 import { useContext, useReducer, useState } from "react";
 import CardViewReducer from "../../reducers/cardViewReducer";
 import { CardViewContext } from "../../contexts/CardViewContext";
-import { ActionIcon, Center, Container } from "@mantine/core";
+import { ActionIcon, Center, Container, TextInput } from "@mantine/core";
 import { useToggle } from "@mantine/hooks";
 import { isOptionGroup } from "@mui/base";
 import { SegmentedControl } from "@mantine/core";
 import { Tabs } from "@mantine/core";
+import { Input } from "@mantine/core";
 
 export default function SortingSelection() {
   const { cardView = "detailed", setCardView } = useContext(CardViewContext);
   const [orderValue, setOrderValue] = useState("react");
   const [viewValue, setViewValue] = useState("react");
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <div
@@ -92,14 +94,33 @@ export default function SortingSelection() {
             />
           </div>
         </div>
-        <div className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4 py-2.5 bg-gray-800 border rounded-full border-gray-600">
+
+        <TextInput
+          icon={
+            <p className=" text-sm text-blue-300">
+              <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
+            </p>
+          }
+          variant="unstyled"
+          placeholder="Search collection..."
+          radius="xl"
+          type="search"
+          className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4  bg-gray-800 border rounded-full border-gray-600 font-monda font-medium"
+          styles={{ input: { color: "white" } }}
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.currentTarget.value)}
+        />
+
+        {/* <div className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4 py-2.5 bg-gray-800 border rounded-full border-gray-600">
           <p className=" text-sm text-blue-300">
             <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
           </p>
+
           <p className="Searchcollection... opacity-50 text-sm tracking-wider leading-tight text-white">
             Search collection...
           </p>
         </div>
+        */}
       </Container>
     </div>
   );

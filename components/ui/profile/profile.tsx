@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { relative } from "path/posix";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { IconButton } from "@mui/material";
-import { ActionIcon, Avatar } from "@mantine/core";
+import { ActionIcon, Avatar, Button, Tooltip } from "@mantine/core";
 import { Image } from "@mantine/core";
+import { useClipboard } from "@mantine/hooks";
+import { Text } from "@mantine/core";
 
 function handleTwitter(handle: string) {
   window.open(`https://twitter.com/${handle}`);
@@ -18,7 +20,17 @@ function handleEmail(handle: string) {
   window.open(`mailto:${handle}?subject=Contacted from The Block`);
 }
 
-function Profile({ userData }: any) {
+function Profile({ userData, wallet }: any) {
+  const clipboard = useClipboard({ timeout: 500 });
+  const [opened, setOpened] = useState(false);
+
+  function handleCopy() {
+    clipboard.copy(userData.wallets[+wallet].address);
+    setOpened((o) => !o);
+    setTimeout(() => {
+      setOpened((o) => !o);
+    }, 500);
+  }
   return (
     <div
       className="userheader inline-flex space-x-10 items-start justify-start"
@@ -93,42 +105,59 @@ function Profile({ userData }: any) {
         </div>
         <div
           className="bio flex flex-col space-y-1 items-start justify-center"
-          style={{ width: 790, height: 65 }}
+          style={{ width: 790 }}
         >
           <p className="bio opacity-50 text-xs font-medium tracking-wide leading-none text-white">
             BIO
           </p>
-          <p
-            className="name text-sm tracking-wider leading-tight text-white"
+          <Text
+            className="name text-sm tracking-wider leading-tight text-white font-monda font-medium"
             style={{ width: 790 }}
           >
             {userData.description}
-          </p>
+          </Text>
         </div>
-        <div
-          className="links inline-flex space-x-4 items-start justify-start"
-          style={{ width: 824, height: 21 }}
-        >
-          <div className="bio flex space-x-1 items-center justify-start">
-            <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
-              <FontAwesomeIcon icon={["fas", "wallet"]} />
-            </p>
-            <div className="amount h-full">
-              <p className="name text-sm tracking-wider leading-tight text-white">
-                {userData.wallets[0].address}
+
+        <div className="links inline-flex space-x-2 items-start justify-start">
+          <Tooltip
+            label="Copied"
+            opened={opened}
+            transition="fade"
+            transitionDuration={100}
+            withArrow
+            color="blue"
+          >
+            <Button compact variant="white" onClick={() => handleCopy()}>
+              <div className="bio flex space-x-2 items-center justify-start">
+                <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
+                  <FontAwesomeIcon icon={["fas", "wallet"]} />
+                </p>
+
+                <div className="amount h-full">
+                  <p className="name text-sm tracking-wider leading-tight text-white font-monda font-medium">
+                    {userData.wallets[+wallet].address}
+                  </p>
+                </div>
+              </div>
+            </Button>
+          </Tooltip>
+
+          <Button
+            compact
+            variant="white"
+            onClick={() => window.open(userData.websiteUrl)}
+          >
+            <div className="bio flex space-x-2 items-center justify-start">
+              <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
+                <FontAwesomeIcon icon={["fas", "link"]} />
               </p>
+              <div className="amount h-full">
+                <p className="name text-sm tracking-wider leading-tight text-white font-monda font-medium">
+                  {userData.websiteUrl}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="bio flex space-x-1 items-center justify-start">
-            <p className="bio opacity-50 text-sm tracking-wider leading-tight text-white">
-              <FontAwesomeIcon icon={["fas", "link"]} />
-            </p>
-            <div className="amount h-full">
-              <p className="name text-sm tracking-wider leading-tight text-white">
-                {userData.websiteUrl}
-              </p>
-            </div>
-          </div>
+          </Button>
         </div>
       </div>
     </div>
