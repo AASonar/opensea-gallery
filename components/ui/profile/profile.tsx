@@ -3,6 +3,8 @@ import { relative } from "path/posix";
 import React, { FC } from "react";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { IconButton } from "@mui/material";
+import { ActionIcon, Avatar } from "@mantine/core";
+import { Image } from "@mantine/core";
 
 function handleTwitter(handle: string) {
   window.open(`https://twitter.com/${handle}`);
@@ -23,11 +25,13 @@ function Profile({ userData }: any) {
       style={{ position: "absolute", top: 400, right: 200 }}
     >
       <div className="useravatar inline-flex flex-col space-y-5 items-center justify-center">
-        <img
+        <Avatar
+          // radius="xl"
           className="image w-full h-52 border rounded-full border-gray-600"
           alt={userData.username + " Profile Picture"}
           src={userData.profilePhotoUrl}
         />
+
         <div className="chip inline-flex space-x-2 items-center justify-start px-2 py-1 bg-yellow-200 border rounded-full border-yellow-300">
           <p className=" text-sm tracking-wider leading-tight text-gray-800">
             <FontAwesomeIcon icon={["fas", "award"]} />
@@ -55,35 +59,35 @@ function Profile({ userData }: any) {
           </div>
           <div className="socials flex space-x-2 items-center justify-center">
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full p-5 rounded-full">
-              <IconButton
-                size="medium"
+              <ActionIcon
+                variant="transparent"
                 onClick={() => handleTwitter(userData.twitterHandle ?? "")}
               >
                 <p className=" text-2xl tracking-wider leading-9 text-blue-300">
                   <FontAwesomeIcon icon={["fab", "twitter"]} />
                 </p>
-              </IconButton>
+              </ActionIcon>
             </div>
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full px-5 py-2.5 rounded-full">
-              <IconButton
-                size="medium"
+              <ActionIcon
+                variant="transparent"
                 onClick={() => handleInstagram(userData.instagramHandle ?? "")}
               >
                 <p className=" text-2xl tracking-wider leading-9 text-blue-300">
                   <FontAwesomeIcon icon={["fab", "instagram"]} />
                 </p>
-              </IconButton>
+              </ActionIcon>
             </div>
 
             <div className="order inline-flex flex-col items-center justify-center w-10 h-full px-5 py-2.5 rounded-full">
-              <IconButton
-                size="medium"
+              <ActionIcon
+                variant="transparent"
                 onClick={() => handleEmail(userData.email ?? "")}
               >
                 <p className=" text-2xl tracking-wider leading-9 text-blue-300">
                   <FontAwesomeIcon icon={["fas", "envelope"]} />
                 </p>
-              </IconButton>
+              </ActionIcon>
             </div>
           </div>
         </div>
