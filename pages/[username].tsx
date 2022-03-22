@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Script from "next/script";
 import { NftCards } from "../components/ui";
@@ -28,6 +27,14 @@ import {
   CardView,
   CardViewContext,
 } from "../components/contexts/CardViewContext";
+import {
+  Image,
+  BackgroundImage,
+  Container,
+  Center,
+  Space,
+  Group,
+} from "@mantine/core";
 
 const User: NextPage = () => {
   const { chain_id, setChain_id, address, setAddress } =
@@ -101,26 +108,23 @@ const User: NextPage = () => {
           <NavBar />
           {NFTStatus === "success" ? (
             <div>
-              <div style={{ marginBottom: "20rem" }}>
-                <CardMedia
-                  component="img"
+              <div style={{ marginBottom: "17rem" }}>
+                <BackgroundImage
                   className="bannercover object-cover w-full h-full"
-                  alt={data.username + " Cover Picture"}
                   style={{ height: 381 }}
                   src={data.coverPhotoUrl}
                 />
-                <Profile userData={data} />
+                <Center>
+                  <Profile userData={data} />
+                </Center>
               </div>
 
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <SortingSelection />
-                </Grid>
-                <Grid item>{<AccCard />}</Grid>
-                <Grid item xs={9}>
-                  {NftCards && <NftCards />}
-                </Grid>
-              </Grid>
+              <Center>
+                <SortingSelection />
+              </Center>
+              <Space h="md" />
+              {/* {<AccCard />} */}
+              <Container size="xl">{NftCards && <NftCards />}</Container>
             </div>
           ) : (
             <></>

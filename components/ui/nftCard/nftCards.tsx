@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Grid } from "@mui/material";
+import { SimpleGrid } from "@mantine/core";
 
 import { useEffect, useState, useContext } from "react";
 import { NFTBaseContext } from "../../contexts/NFTContext";
@@ -32,10 +32,10 @@ export default function NftCards() {
   }, [nftBaseData]);
 
   return (
-    <Grid container spacing={1}>
+    <SimpleGrid cols={3} spacing="sm">
       {(nftItemsData ?? []).map((item) =>
         item.nft_data?.map((params, i) => (
-          <Grid item key={i} xs={3}>
+          <div key={i}>
             {/* <NFTCard
               {...params}
               timeout={i * 200}
@@ -53,15 +53,15 @@ export default function NftCards() {
               contract_decimals={item.contract_decimals}
               chain_id={JSON.stringify(nftBaseData?.chain_id)}
             />
-          </Grid>
+          </div>
         ))
       )}
 
-      {(tezosNftCardsData ?? []).map((params, i) => (
-        <Grid item key={i} xs={3}>
+      {/* {(tezosNftCardsData ?? []).map((params, i) => (
+        <div key={i}>
           <TezosNFTCard {...params} timeout={i * 300} gateway={i} />
-        </Grid>
-      ))}
-    </Grid>
+        </div>
+      ))} */}
+    </SimpleGrid>
   );
 }

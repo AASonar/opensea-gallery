@@ -22,7 +22,7 @@ function Profile({ userData }: any) {
   return (
     <div
       className="userheader inline-flex space-x-10 items-start justify-start"
-      style={{ position: "absolute", top: 400, right: 200 }}
+      style={{ position: "absolute", top: 400 }}
     >
       <div className="useravatar inline-flex flex-col space-y-5 items-center justify-center">
         <Avatar
@@ -95,7 +95,7 @@ function Profile({ userData }: any) {
           className="bio flex flex-col space-y-1 items-start justify-center"
           style={{ width: 790, height: 65 }}
         >
-          <p className="bio opacity-50 text-xs font-semibold tracking-wide leading-none text-white">
+          <p className="bio opacity-50 text-xs font-medium tracking-wide leading-none text-white">
             BIO
           </p>
           <p
