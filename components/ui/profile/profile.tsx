@@ -8,18 +8,11 @@ import { Image } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { Text } from "@mantine/core";
 import { Badge } from "@mantine/core";
-
-function handleTwitter(handle: string) {
-  window.open(`https://twitter.com/${handle}`);
-}
-
-function handleInstagram(handle: string) {
-  window.open(`https://instagram.com/${handle}`);
-}
-
-function handleEmail(handle: string) {
-  window.open(`mailto:${handle}?subject=Contacted from The Block`);
-}
+import {
+  handleEmail,
+  handleInstagram,
+  handleTwitter,
+} from "../../utils/openLinks";
 
 function Profile({ userData, wallet }: any) {
   const clipboard = useClipboard({ timeout: 500 });

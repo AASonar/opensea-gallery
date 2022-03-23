@@ -11,7 +11,7 @@ const NavBar: FC = ({ children }) => {
       <div className="logo flex space-x-2.5 items-center justify-center">
         <Image
           className="cube1 w-8 h-full"
-          src="cube.svg"
+          src="/cube.svg"
           alt="The Block Logo"
         />
         <p className="THEBLOCK text-sm font-bold text-blue-300">THE BLOCK</p>
