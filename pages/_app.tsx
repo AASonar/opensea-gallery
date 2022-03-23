@@ -18,6 +18,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { Button, Code, Title, MantineProvider } from "@mantine/core";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chain_id, setChain_id] = useState("1");
@@ -48,24 +49,47 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider value={supabaseClient}>
-        <ThemeProvider theme={theme}>
-          <AddressContext.Provider
-            value={{
-              chain_id,
-              setChain_id,
-              address,
-              setAddress,
-              isSubmitAddress,
-              setIsSubmitAddress,
-            }}
-          >
-            <Component {...pageProps} />
-          </AddressContext.Provider>
-        </ThemeProvider>
-      </Provider>
-    </QueryClientProvider>
+    <MantineProvider
+      theme={{
+        fontFamily: "Work Sans, sans-serif",
+        fontFamilyMonospace: "Work Sans, sans-serif",
+        headings: { fontFamily: "Monda, sans-serif" },
+        colors: {
+          "ocean-blue": [
+            "#7AD1DD",
+            "#5FCCDB",
+            "#44CADC",
+            "#2AC9DE",
+            "#1AC2D9",
+            "#11B7CD",
+            "#09ADC3",
+            "#0E99AC",
+            "#128797",
+            "#147885",
+          ],
+        },
+        primaryColor: "ocean-blue",
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <Provider value={supabaseClient}>
+          <ThemeProvider theme={theme}>
+            <AddressContext.Provider
+              value={{
+                chain_id,
+                setChain_id,
+                address,
+                setAddress,
+                isSubmitAddress,
+                setIsSubmitAddress,
+              }}
+            >
+              <Component {...pageProps} />
+            </AddressContext.Provider>
+          </ThemeProvider>
+        </Provider>
+      </QueryClientProvider>
+    </MantineProvider>
   );
 }
 

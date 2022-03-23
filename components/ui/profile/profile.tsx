@@ -120,7 +120,7 @@ function Profile({ userData, wallet }: any) {
             transition="fade"
             transitionDuration={100}
             withArrow
-            color="blue"
+            color="indigo"
           >
             <Button compact variant="white" onClick={() => handleCopy()}>
               <div className="bio flex space-x-2 items-center justify-start">

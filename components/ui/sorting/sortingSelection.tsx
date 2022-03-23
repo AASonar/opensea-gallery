@@ -3,7 +3,13 @@ import { Icon, IconButton } from "@mui/material";
 import { useContext, useReducer, useState } from "react";
 import CardViewReducer from "../../reducers/cardViewReducer";
 import { CardViewContext } from "../../contexts/CardViewContext";
-import { ActionIcon, Center, Container, TextInput } from "@mantine/core";
+import {
+  ActionIcon,
+  Center,
+  Container,
+  TextInput,
+  Tooltip,
+} from "@mantine/core";
 import { useToggle } from "@mantine/hooks";
 import { isOptionGroup } from "@mui/base";
 import { SegmentedControl } from "@mantine/core";
@@ -51,35 +57,110 @@ export default function SortingSelection() {
             size="md"
             color="indigo"
             value={orderValue}
+            className="bg-transparent divide-transparent"
             onChange={setOrderValue}
             data={[
               {
                 value: "latest",
                 label: (
-                  <FontAwesomeIcon icon={["fas", "arrow-down-short-wide"]} />
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By Latest"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-short-wide"]} />
+                  </Tooltip>
                 ),
               },
               {
                 value: "oldest",
                 label: (
-                  <FontAwesomeIcon icon={["fas", "arrow-down-wide-short"]} />
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By Oldest"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-wide-short"]} />
+                  </Tooltip>
                 ),
               },
               {
                 value: "1-9",
-                label: <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />,
+                label: (
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By Lowest Value"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-1-9"]} />
+                  </Tooltip>
+                ),
               },
               {
                 value: "9-1",
-                label: <FontAwesomeIcon icon={["fas", "arrow-down-9-1"]} />,
+                label: (
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By Highest Value"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-9-1"]} />{" "}
+                  </Tooltip>
+                ),
               },
               {
                 value: "A-Z",
-                label: <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />,
+                label: (
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By A-Z"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-a-z"]} />
+                  </Tooltip>
+                ),
               },
               {
                 value: "Z-A",
-                label: <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />,
+                label: (
+                  <Tooltip
+                    transition="pop"
+                    transitionDuration={200}
+                    transitionTimingFunction="ease"
+                    color="indigo"
+                    label="By Z-A"
+                    withArrow
+                    arrowSize={3}
+                    radius="lg"
+                  >
+                    <FontAwesomeIcon icon={["fas", "arrow-down-z-a"]} />
+                  </Tooltip>
+                ),
               },
             ]}
           />
@@ -89,15 +170,42 @@ export default function SortingSelection() {
               size="md"
               color="violet"
               value={viewValue}
+              className="bg-transparent divide-transparent"
               onChange={setViewValue}
               data={[
                 {
                   value: "detailed",
-                  label: <FontAwesomeIcon icon={["fas", "border-all"]} />,
+                  label: (
+                    <Tooltip
+                      transition="pop"
+                      color="violet"
+                      transitionDuration={200}
+                      transitionTimingFunction="ease"
+                      label="Detailed View"
+                      withArrow
+                      arrowSize={3}
+                      radius="lg"
+                    >
+                      <FontAwesomeIcon icon={["fas", "border-all"]} />{" "}
+                    </Tooltip>
+                  ),
                 },
                 {
                   value: "art",
-                  label: <FontAwesomeIcon icon={["fas", "grip"]} />,
+                  label: (
+                    <Tooltip
+                      transition="pop"
+                      color="violet"
+                      transitionDuration={200}
+                      transitionTimingFunction="ease"
+                      label="Art View"
+                      withArrow
+                      arrowSize={3}
+                      radius="lg"
+                    >
+                      <FontAwesomeIcon icon={["fas", "grip"]} />{" "}
+                    </Tooltip>
+                  ),
                 },
               ]}
             />
