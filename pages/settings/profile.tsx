@@ -1,7 +1,15 @@
 import type { NextPage } from "next";
 import Footer from "../../components/ui/footer";
 import NavBar from "../../components/ui/navbar";
-import { Image, Space, Avatar, TextInput, Textarea } from "@mantine/core";
+import {
+  Image,
+  Space,
+  Avatar,
+  TextInput,
+  Textarea,
+  Button,
+  Container,
+} from "@mantine/core";
 import SettingsTabs from "../../components/ui/settings/settingsNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -35,19 +43,21 @@ const Account: NextPage = () => {
             style={{ width: 780, height: 327 }}
           >
             <Image
-              className="bannercover inline-flex items-end justify-end pl-96 pr-3 pt-44 pb-2 absolute"
-              style={{ width: 732, height: 219, left: 24, top: 24 }}
+              className="inline-flex w-full items-end justify-end pl-96 pr-3 pt-44 pb-2 absolute"
+              style={{ height: 219, left: 24, top: 24 }}
+              alt="cover photo change"
               src="https://wallpaperaccess.com/full/411002.jpg"
-            >
-              <div className="nft/button/icon flex space-x-0.5 items-center justify-center flex-1 h-full p-2 bg-gray-600 border rounded-full border-indigo-500">
-                <p className=" text-xs font-solid tracking-wide leading-none text-indigo-500 capitalize">
-                  s
-                </p>
-                <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
-                  +
-                </p>
-              </div>
-            </Image>
+            />
+
+            {/* <div className="nft/button/icon flex space-x-0.5 items-center justify-center flex-1 h-full p-2 bg-gray-600 border rounded-full border-indigo-500">
+              <p className=" text-xs font-solid tracking-wide leading-none text-indigo-500 capitalize">
+                <FontAwesomeIcon icon={["fas", "image"]} />
+              </p>
+              <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
+                +
+              </p>
+            </div> */}
+
             <Avatar
               className="image w-32 h-32 absolute border rounded-full border-gray-600"
               style={{ left: 45, top: 180 }}
@@ -120,6 +130,9 @@ const Account: NextPage = () => {
                 styles={styles}
               />
             </div>
+            <Container className="items-end">
+              <Button>Save All</Button>
+            </Container>
           </div>
         </div>
       </div>
