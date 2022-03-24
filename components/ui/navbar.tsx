@@ -45,7 +45,7 @@ const NavBar: FC = ({ children }) => {
             variant="subtle"
             radius="md"
             uppercase
-            className="font-workSans font-medium"
+            className="font-workSans font-medium hover:bg-transparent"
           >
             LOGIN
           </Button>
