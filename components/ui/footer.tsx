@@ -9,7 +9,7 @@ import {
 
 const Footer: FC = ({ children }) => {
   return (
-    <div className="footer inline-flex space-x-10 items-center justify-center p-16 bg-gray-700">
+    <div className="footer inline-flex space-x-10 items-center justify-center p-16 bg-lightPurple">
       <Group className="creditsand socials inline-flex flex-col ml-20 space-y-10 items-start justify-start">
         <div className="socials flex flex-col space-y-4 items-start justify-start">
           <p className="FOLLOWUS AND BE UPDATED WITH OUR LATEST FEATURES text-sm font-medium tracking-wider leading-tight text-white capitalize">
@@ -77,7 +77,7 @@ const Footer: FC = ({ children }) => {
             src="/cube.svg"
             alt="The Block Logo"
           />
-          <p className="THEBLOCK text-sm font-bold text-blue-300">THE BLOCK</p>
+          <p className="THEBLOCK text-sm font-bold text-teal">THE BLOCK</p>
         </div>
         <div className="credits flex flex-col items-end justify-center mr-50">
           <p className="text-sm leading-tight text-right text-white">

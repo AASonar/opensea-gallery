@@ -54,21 +54,22 @@ function MyApp({ Component, pageProps }: AppProps) {
         fontFamily: "Work Sans, sans-serif",
         fontFamilyMonospace: "Work Sans, sans-serif",
         headings: { fontFamily: "Monda, sans-serif" },
+
         colors: {
-          "ocean-blue": [
-            "#7AD1DD",
-            "#5FCCDB",
-            "#44CADC",
-            "#2AC9DE",
-            "#1AC2D9",
-            "#11B7CD",
-            "#09ADC3",
-            "#0E99AC",
-            "#128797",
-            "#147885",
+          cyan: [
+            "#E3FAFC",
+            "#C5F6FA",
+            "#99E9F2",
+            "#66D9E8",
+            "#3BC9DB",
+            "#22B8CF",
+            "#15AABF",
+            "#74E0E6", //Primary
+            "#0C8599",
+            "#0B7285",
           ],
         },
-        primaryColor: "ocean-blue",
+        primaryColor: "cyan",
       }}
     >
       <QueryClientProvider client={queryClient}>

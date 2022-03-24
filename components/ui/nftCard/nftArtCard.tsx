@@ -55,7 +55,7 @@ export default function NftArtCard({
     <Card
       shadow="sm"
       p="lg"
-      className="inline-flex flex-col space-y-2 items-start justify-start w-full h-full p-2 bg-gray-700 border rounded border-gray-600"
+      className="inline-flex flex-col space-y-2 items-start justify-start w-full h-full p-2 bg-lightPurple border-lightPurpleOutline border rounded"
     >
       <Image
         className="w-full flex-1 rounded"

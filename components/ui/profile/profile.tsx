@@ -70,7 +70,7 @@ function Profile({ userData, wallet }: any) {
                 variant="transparent"
                 onClick={() => handleTwitter(userData.twitterHandle ?? "")}
               >
-                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                <p className=" text-2xl tracking-wider leading-9 text-teal">
                   <FontAwesomeIcon icon={["fab", "twitter"]} />
                 </p>
               </ActionIcon>
@@ -80,7 +80,7 @@ function Profile({ userData, wallet }: any) {
                 variant="transparent"
                 onClick={() => handleInstagram(userData.instagramHandle ?? "")}
               >
-                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                <p className=" text-2xl tracking-wider leading-9 text-teal">
                   <FontAwesomeIcon icon={["fab", "instagram"]} />
                 </p>
               </ActionIcon>
@@ -91,7 +91,7 @@ function Profile({ userData, wallet }: any) {
                 variant="transparent"
                 onClick={() => handleEmail(userData.email ?? "")}
               >
-                <p className=" text-2xl tracking-wider leading-9 text-blue-300">
+                <p className=" text-2xl tracking-wider leading-9 text-teal">
                   <FontAwesomeIcon icon={["far", "envelope"]} />
                 </p>
               </ActionIcon>

@@ -9,6 +9,11 @@ module.exports = {
         monda: ["Monda, sans-serif"],
         workSans: ["'Work Sans', sans-serif"],
       },
+      colors: {
+        lightPurple: "#313248",
+        lightPurpleOutline: "#464874",
+        teal: "#74E0E6",
+      },
     },
   },
   plugins: [],

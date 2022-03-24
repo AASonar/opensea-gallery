@@ -5,6 +5,13 @@ import { Image, Space, Avatar, TextInput, Textarea } from "@mantine/core";
 import SettingsTabs from "../../components/ui/settings/settingsNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const styles = {
+  defaultVariant: { backgroundColor: "#28293D", borderColor: "#464874" },
+  label: { color: "white", opacity: 25 },
+  input: { color: "white" },
+  wrapper: { width: 732, borderColor: "#464874" },
+};
+
 const Account: NextPage = () => {
   return (
     <div>
@@ -24,7 +31,7 @@ const Account: NextPage = () => {
             User Profile
           </p>
           <div
-            className="customization1 relative bg-gray-700 border rounded border-gray-600"
+            className="customization1 relative bg-lightPurple border-lightPurpleOutline border rounded"
             style={{ width: 780, height: 327 }}
           >
             <Image
@@ -59,86 +66,58 @@ const Account: NextPage = () => {
             </div>
           </div>
           <div
-            className="customization2 flex flex-col space-y-4 items-start justify-start p-6 bg-gray-700 border rounded border-gray-600"
+            className="customization2 flex flex-col space-y-4 items-start justify-start p-6 bg-lightPurple border rounded border-lightPurpleOutline"
             style={{ width: 780, height: 716 }}
           >
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="Sonaru"
                 label="Username"
-                required
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <Textarea
                 placeholder="🇵🇭 NFT Artist | Art Acc of @frozensonar | OBJTK: http://objkt.com/@frozensonar FND: http://foundation.app/@frozensonar | Banner: Space Voyagers on OBJKT"
                 label="Bio"
-                required
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="ronin:2435325234"
                 label="Wallet"
-                required
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="bryan@acadarena.com"
                 label="Email"
-                required
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="behance.net/frozensonar"
                 label="Website"
-                required
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="frozensonar"
                 label="Twitter Handle"
-                required
                 icon={<FontAwesomeIcon icon={["fas", "at"]} />}
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
-            <div
-              className="field flex flex-col space-y-1 items-start justify-start"
-              style={{ width: 732 }}
-            >
+            <div className="field flex flex-col space-y-1 items-start justify-start">
               <TextInput
                 placeholder="frozensonar"
                 label="Instagram Handle"
-                required
                 icon={<FontAwesomeIcon icon={["fas", "at"]} />}
-                style={{ width: 732 }}
+                styles={styles}
               />
             </div>
           </div>

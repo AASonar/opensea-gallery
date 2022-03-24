@@ -7,14 +7,14 @@ const NavBar: FC = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <div className="navbar w-full inline-flex space-x-80 items-center justify-between px-24 py-5 bg-gray-700 shadow">
+    <div className="navbar w-full inline-flex space-x-80 items-center justify-between px-24 py-5 bg-lightPurple shadow">
       <div className="logo flex space-x-2.5 items-center justify-center">
         <Image
           className="cube1 w-8 h-full"
           src="/cube.svg"
           alt="The Block Logo"
         />
-        <p className="THEBLOCK text-sm font-bold text-blue-300">THE BLOCK</p>
+        <p className="THEBLOCK text-sm font-bold text-teal">THE BLOCK</p>
       </div>
       <div
         className="actions flex space-x-10 items-center justify-center"
@@ -22,16 +22,20 @@ const NavBar: FC = ({ children }) => {
       >
         <TextInput
           icon={
-            <p className=" text-sm text-blue-300">
+            <p className=" text-sm text-teal">
               <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
             </p>
           }
-          variant="unstyled"
           placeholder="Search..."
           radius="xl"
           type="search"
-          className="searchbar flex space-x-2.5 items-center justify-start w-72 px-4  bg-gray-800 border rounded-full border-gray-600 font-monda font-medium"
-          styles={{ input: { color: "white" } }}
+          styles={{
+            defaultVariant: {
+              backgroundColor: "#28293D",
+              borderColor: "#464874",
+            },
+            input: { color: "white" },
+          }}
           value={searchValue}
           onChange={(event) => setSearchValue(event.currentTarget.value)}
         />

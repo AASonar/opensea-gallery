@@ -15,6 +15,7 @@ import { isOptionGroup } from "@mui/base";
 import { SegmentedControl } from "@mantine/core";
 import { Tabs } from "@mantine/core";
 import { Input } from "@mantine/core";
+import { color } from "@mui/system";
 
 export default function SortingSelection() {
   const { cardView = "detailed", setCardView } = useContext(CardViewContext);
@@ -26,24 +27,19 @@ export default function SortingSelection() {
     <div className="sectionheader inline-flex flex-col space-y-6 items-start justify-center">
       <Tabs>
         <Tabs.Tab
+          className="text-gray-500"
           label={
-            <div className="tab inline-flex flex-col space-y-1 items-center justify-start">
-              <div className="text inline-flex items-start justify-start px-3">
-                <p className="tEXT text-sm font-medium tracking-wider leading-tight text-blue-300 capitalize">
-                  NFT ART COLLECTION
-                </p>
-              </div>
-              <div className="line w-full h-0.5 border-blue-300" />
-            </div>
+            <p className="tEXT text-sm font-medium tracking-wider leading-tight  capitalize">
+              NFT ART COLLECTION
+            </p>
           }
         />
         <Tabs.Tab
+          className="text-gray-500"
           label={
-            <div className="text inline-flex items-start justify-start px-3">
-              <p className="tEXT text-sm font-medium tracking-wider leading-tight text-white capitalize">
-                NFT ART ALBUMS
-              </p>
-            </div>
+            <p className="tEXT text-sm font-medium tracking-wider leading-tight   capitalize">
+              NFT ART ALBUMS
+            </p>
           }
         />
       </Tabs>
@@ -214,16 +210,22 @@ export default function SortingSelection() {
 
         <TextInput
           icon={
-            <p className=" text-sm text-blue-300">
+            <p className=" text-sm text-teal">
               <FontAwesomeIcon icon={["fas", "magnifying-glass"]} />
             </p>
           }
-          variant="unstyled"
           placeholder="Search collection..."
           radius="xl"
           type="search"
-          className="searchbar flex space-x-2.5 items-center justify-start w-1/4 px-4  bg-gray-800 border rounded-full border-gray-600 font-monda font-medium"
-          styles={{ input: { color: "white" } }}
+          styles={{
+            defaultVariant: {
+              backgroundColor: "#28293D",
+              borderColor: "#464874",
+            },
+            label: { color: "white", opacity: 25 },
+            input: { color: "white" },
+            wrapper: { borderColor: "#464874" },
+          }}
           value={searchValue}
           onChange={(event) => setSearchValue(event.currentTarget.value)}
         />
