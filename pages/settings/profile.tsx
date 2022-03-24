@@ -38,42 +38,39 @@ const Account: NextPage = () => {
           <p className="UserProfile text-2xl font-bold leading-normal text-white">
             User Profile
           </p>
+
           <div
-            className="customization1 relative bg-lightPurple border-lightPurpleOutline border rounded"
-            style={{ width: 780, height: 327 }}
+            className="relative flex bg-lightPurple border-lightPurpleOutline border rounded p-8 h-96"
+            style={{ width: 780}}
           >
-            <Image
-              className="inline-flex w-full items-end justify-end pl-96 pr-3 pt-44 pb-2 absolute"
-              style={{ height: 219, left: 24, top: 24 }}
-              alt="cover photo change"
-              src="https://wallpaperaccess.com/full/411002.jpg"
-            />
-
-            {/* <div className="nft/button/icon flex space-x-0.5 items-center justify-center flex-1 h-full p-2 bg-gray-600 border rounded-full border-indigo-500">
+            <div className="relative w-full h-48 bg-[url('https://wallpaperaccess.com/full/411002.jpg')]" >
+            <div className="nft/button/icon inline-flex space-x-0.5 items-center justify-center w-8 h-8 p-2 absolute bottom-2 right-2 bg-gray-600 border rounded-full border-indigo-500">
               <p className=" text-xs font-solid tracking-wide leading-none text-indigo-500 capitalize">
-                <FontAwesomeIcon icon={["fas", "image"]} />
-              </p>
-              <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
-                +
-              </p>
-            </div> */}
-
-            <Avatar
-              className="image w-32 h-32 absolute border rounded-full border-gray-600"
-              style={{ left: 45, top: 180 }}
-              src="https://via.placeholder.com/125x125"
-            />
-            <div
-              className="nft/button/icon inline-flex space-x-0.5 items-center justify-center w-8 h-8 p-2 absolute bg-gray-600 border rounded-full border-indigo-500"
-              style={{ left: 136, top: 266 }}
-            >
-              <p className=" text-xs font-solid tracking-wide leading-none text-indigo-500 capitalize">
-                <FontAwesomeIcon icon={["fas", "image"]} />
-              </p>
-              <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
-                +
+                  <FontAwesomeIcon icon={["fas", "image"]} />
+                </p>
+                <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
+                  +
               </p>
             </div>
+          </div>
+          
+          <Avatar
+                className="image w-32 h-32 absolute bottom-12 left-12 border rounded-full border-gray-600"
+                src="https://via.placeholder.com/125x125"
+              />
+            <div className="absolute bottom-12 left-12 w-32 h-32">
+              <div className="relative w-full h-full">
+              <div className="nft/button/icon inline-flex space-x-0.5 items-center justify-center w-8 h-8 p-2 absolute bottom-0 right-0 bg-gray-600 border rounded-full border-indigo-500"
+              >
+                <p className=" text-xs font-solid tracking-wide leading-none text-indigo-500 capitalize">
+                  <FontAwesomeIcon icon={["fas", "image"]} />
+                </p>
+                <p className="+ text-xs font-solid tracking-wide leading-3 text-indigo-500 capitalize">
+                  +
+                </p>
+              </div>
+              </div>
+              </div>
           </div>
           <div
             className="customization2 flex flex-col space-y-4 items-start justify-start p-6 bg-lightPurple border rounded border-lightPurpleOutline"
