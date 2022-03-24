@@ -19,15 +19,15 @@ const SettingsTabs: FC = ({ children }) => {
         data={[
           {
             value: "profile",
-            label: <p className="text-cyan-300">User Profile</p>,
+            label: <p className="text-teal">User Profile</p>,
           },
           {
             value: "account",
-            label: <p className="text-cyan-300">Account Settings</p>,
+            label: <p className="text-teal">Account Settings</p>,
           },
           {
             value: "apperance",
-            label: <p className="text-cyan-300">Appearance</p>,
+            label: <p className="text-teal">Appearance</p>,
           },
           {
             value: "logout",

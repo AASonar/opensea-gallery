@@ -54,7 +54,7 @@ const NavBar: FC = ({ children }) => {
             radius="md"
             uppercase
             rightIcon={<FontAwesomeIcon icon={["fas", "right-to-bracket"]} />}
-            className="font-workSans font-medium"
+            className="font-workSans font-medium bg-teal text-gray-800"
           >
             SIGNUP
           </Button>

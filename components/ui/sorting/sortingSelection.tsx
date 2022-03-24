@@ -48,12 +48,12 @@ export default function SortingSelection() {
         className="filters inline-flex space-x-6 items-center justify-end"
         style={{ width: 1080, height: 40 }}
       >
-        <div className="filteritem flex space-x-2 items-center justify-center">
+        <div className="filteritem flex space-x-2 items-center justify-center ">
           <SegmentedControl
             size="md"
             color="indigo"
             value={orderValue}
-            className="bg-transparent divide-transparent"
+            className="bg-transparent divide-transparent "
             onChange={setOrderValue}
             data={[
               {
