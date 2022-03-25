@@ -11,7 +11,7 @@ const SettingsTabs: FC = ({ children }) => {
       </p>
       <SegmentedControl
         size="md"
-        color="dark"
+        color="gray"
         className="items-start bg-transparent divide-transparent"
         orientation="vertical"
         value={orderValue}

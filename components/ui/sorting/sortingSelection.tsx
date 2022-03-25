@@ -182,7 +182,7 @@ export default function SortingSelection() {
                       arrowSize={3}
                       radius="lg"
                     >
-                      <FontAwesomeIcon icon={["fas", "border-all"]} />{" "}
+                      <FontAwesomeIcon icon={["fas", "border-all"]} />
                     </Tooltip>
                   ),
                 },
@@ -199,7 +199,7 @@ export default function SortingSelection() {
                       arrowSize={3}
                       radius="lg"
                     >
-                      <FontAwesomeIcon icon={["fas", "grip"]} />{" "}
+                      <FontAwesomeIcon icon={["fas", "grip"]} />
                     </Tooltip>
                   ),
                 },
