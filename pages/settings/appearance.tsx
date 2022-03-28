@@ -38,7 +38,7 @@ const Appearance: NextPage = () => {
           <SettingsBar />
           <Space w="xl" />
           <div
-            className="appearancesettings wrapper inline-flex flex-col space-y-6 items-start justify-start pt-10"
+            className="appearancesettings wrapper inline-flex flex-col space-y-6 items-start justify-start pt-8"
             style={{ width: 780, height: 748 }}
           >
             <p className="Appearance text-2xl font-bold leading-normal text-white">
