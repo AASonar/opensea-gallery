@@ -17,7 +17,6 @@ const FetchNFTs = async (address: string, metadata: boolean) => {
   const { data, status } = response;
 
   if (status === 200) {
-    //console.log(data);
     return data;
   }
 

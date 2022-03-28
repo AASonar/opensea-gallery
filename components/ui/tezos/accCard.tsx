@@ -19,7 +19,6 @@ export default function AccCard() {
     //TODO: change region to dynamics
     if (address && setIsSubmitAddress) {
       FetchAccount(address, true).then((details: any) => {
-        //console.log(details);
         setAccDetails(details);
       });
     }

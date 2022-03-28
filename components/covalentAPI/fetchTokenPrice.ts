@@ -28,7 +28,7 @@ const FetchTokenPrice = async (
 
   if (dataRoot.error === false) {
     const transactions = items[0].nft_transactions[0];
-    console.log(transactions);
+
     return transactions;
   }
 

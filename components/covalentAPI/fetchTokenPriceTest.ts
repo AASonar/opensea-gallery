@@ -27,7 +27,6 @@ const FetchTokenPriceTest = async (
   const { items: data_inside } = data2;
 
   if (data.error === false) {
-    console.log(data_inside);
     return data_inside;
   }
 

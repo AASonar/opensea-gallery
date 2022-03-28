@@ -3,7 +3,6 @@ export default function convertDecimals(
   contract_decimals: number,
   decimal_amount: number
 ): string {
-  //   console.log(contract_decimals);
   const final = (value / 10 ** 18).toFixed(decimal_amount);
   return final;
 }

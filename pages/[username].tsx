@@ -64,7 +64,6 @@ const User: NextPage = () => {
   function userSelector() {
     // setAddress!(user);
     if (userProfile && wallet) {
-      console.log(userProfile.wallets[+wallet]);
       FetchTokenBalance(
         userProfile.wallets[+wallet].chainId,
         userProfile.wallets[+wallet].address

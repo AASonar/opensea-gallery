@@ -13,19 +13,17 @@ import convertDecimals from "../../utils/convertDecimals";
 import { Card, Image, Text } from "@mantine/core";
 
 interface NFTDataTypeProps extends NFTDataType {
-  timeout: number;
   contract_address: string;
   contract_decimals: number;
   chain_id: string;
 }
 
-export default function NftArtCard({
+export default function NftDetailedViewCard({
   external_data: { image, image_512, description, name },
   original_owner,
   owner,
   token_balance,
   token_id,
-  timeout,
   contract_address,
   contract_decimals,
   chain_id,
@@ -34,13 +32,10 @@ export default function NftArtCard({
   const [nftPrice, setNftPrice] = useState<NFTTransaction>();
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsImageLoaded(true);
-      FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
-        setNftPrice(i)
-      );
-    }, timeout);
-  }, [timeout]);
+    FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
+      setNftPrice(i)
+    );
+  }, []);
 
   function handleClick(contract_address: string, token_id: string) {
     window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);

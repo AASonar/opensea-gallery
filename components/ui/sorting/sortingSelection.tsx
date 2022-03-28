@@ -20,7 +20,7 @@ import { color } from "@mui/system";
 export default function SortingSelection() {
   const { cardView = "detailed", setCardView } = useContext(CardViewContext);
   const [orderValue, setOrderValue] = useState("latest");
-  const [viewValue, setViewValue] = useState("detailed");
+  //const [viewValue, setViewValue] = useState("detailed");
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -165,9 +165,9 @@ export default function SortingSelection() {
             <SegmentedControl
               size="md"
               color="violet"
-              value={viewValue}
+              value={cardView}
               className="bg-transparent divide-transparent"
-              onChange={setViewValue}
+              onChange={setCardView}
               data={[
                 {
                   value: "detailed",
