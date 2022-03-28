@@ -10,6 +10,7 @@ module.exports = {
         workSans: ["'Work Sans', sans-serif"],
       },
       colors: {
+        purpleBG: "#28293d",
         lightPurple: "#313248",
         lightPurpleOutline: "#464874",
         teal: "#74E0E6",

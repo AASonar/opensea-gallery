@@ -16,6 +16,7 @@ import SettingsTabs from "../../components/ui/settings/settingsNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { RadioGroup, Radio } from "@mantine/core";
 import { useState } from "react";
+import SettingsBar from "../../components/ui/settings/settingsBar";
 
 const Appearance: NextPage = () => {
   const [orderValue, setOrderValue] = useState("latest");
@@ -34,7 +35,7 @@ const Appearance: NextPage = () => {
       <NavBar />
       <Center>
         <div className="allcontent inline-flex space-x-16 items-start justify-start px-24 pt-16">
-          <SettingsTabs />
+          <SettingsBar />
           <Space w="xl" />
           <div
             className="appearancesettings wrapper inline-flex flex-col space-y-6 items-start justify-start pt-10"

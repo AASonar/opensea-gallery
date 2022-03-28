@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import SettingsTabs from "../../components/ui/settings/settingsNavbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SettingsBar from "../../components/ui/settings/settingsBar";
 
 const styles = {
   defaultVariant: { backgroundColor: "#28293D", borderColor: "#464874" },
@@ -27,7 +28,7 @@ const Profile: NextPage = () => {
       <NavBar />
       <Center>
         <div className="allcontent inline-flex space-x-16 items-start justify-start px-24 pt-16">
-          <SettingsTabs />
+          <SettingsBar />
           <Space w="xl" />
           <div className="appearancesettings wrapper inline-flex flex-col space-y-6 items-start justify-start pt-8">
             <p className="UserProfile text-2xl font-bold leading-normal text-white">
