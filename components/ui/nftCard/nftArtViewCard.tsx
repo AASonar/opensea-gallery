@@ -10,7 +10,9 @@ import FetchTokenPrice from "../../covalentAPI/fetchTokenPrice";
 import { NFTTransaction } from "../../types/nftTransaction";
 import convertBalance from "../../utils/convertBalance";
 import convertDecimals from "../../utils/convertDecimals";
-import { Card, Image, Text } from "@mantine/core";
+import { ActionIcon, Card, Image, Space, Text } from "@mantine/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Bookmark from "../textstyles/bookmark";
 
 interface NFTDataTypeProps extends NFTDataType {
   contract_address: string;
@@ -29,8 +31,13 @@ export default function NftArtViewCard({
   chain_id,
 }: NFTDataTypeProps) {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  const [nftPrice, setNftPrice] = useState<NFTTransaction>();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
+    //   setNftPrice(i)
+    // );
+  }, [chain_id, contract_address, token_id]);
 
   function handleClick(contract_address: string, token_id: string) {
     window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);
@@ -41,12 +48,59 @@ export default function NftArtViewCard({
     e.target.src = image ? image : "/no_image_ph.jpg";
   };
 
+  function HoverElement() {
+    return (
+      <div className="nftart item flex-1 h-full bg-gray-900 bg-opacity-75 w-full absolute top-0 left-0 hidden group-hover:block">
+        <div className="overlay inline-flex flex-col space-y-2.5 items-end justify-between w-full h-full p-6">
+          <div className="saveicon inline-flex items-end justify-end">
+            <Bookmark />
+          </div>
+          <div className="texts flex flex-col space-y-2.5 items-start justify-end w-full">
+            <Header4>{name}</Header4>
+            <div className="tracking-wide w-24 ">
+              <Subheader2>{original_owner}</Subheader2>
+            </div>
+
+            {nftPrice && (
+              <div className="price inline-flex space-x-2.5 items-center justify-end">
+                <div className="amount flex space-x-1 items-start justify-start">
+                  <Image
+                    className="w-6 h-6"
+                    src="ethereum-1.svg"
+                    alt="Crypto Symbol"
+                  />
+                  <div className="tracking-wider leading-relaxed">
+                    <Header5>
+                      {convertDecimals(
+                        +nftPrice?.value ?? 0,
+                        contract_decimals,
+                        4
+                      )}
+                    </Header5>
+                  </div>
+                </div>
+                <div className="tracking-wider leading-relaxed">
+                  <Header5>
+                    {convertBalance(nftPrice?.value_quote ?? 0)}
+                  </Header5>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <Image
-      className="w-full h-full rounded"
-      alt={name}
-      src={image_512}
-      onError={handleImageError}
-    />
+    <div className="group flex-1 h-full relative">
+      <Image
+        className="w-full h-full rounded"
+        alt={name}
+        src={image_512}
+        onError={handleImageError}
+      />
+      <HoverElement />
+    </div>
   );
 }

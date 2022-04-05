@@ -10,7 +10,9 @@ import FetchTokenPrice from "../../covalentAPI/fetchTokenPrice";
 import { NFTTransaction } from "../../types/nftTransaction";
 import convertBalance from "../../utils/convertBalance";
 import convertDecimals from "../../utils/convertDecimals";
-import { Card, Image, Text } from "@mantine/core";
+import { ActionIcon, Card, Image, Space, Text } from "@mantine/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Bookmark from "../textstyles/bookmark";
 
 interface NFTDataTypeProps extends NFTDataType {
   contract_address: string;
@@ -32,10 +34,10 @@ export default function NftDetailedViewCard({
   const [nftPrice, setNftPrice] = useState<NFTTransaction>();
 
   useEffect(() => {
-    FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
-      setNftPrice(i)
-    );
-  }, []);
+    // FetchTokenPrice(chain_id, contract_address, token_id).then((i) =>
+    //   setNftPrice(i)
+    // );
+  }, [chain_id, contract_address, token_id]);
 
   function handleClick(contract_address: string, token_id: string) {
     window.open(`https://opensea.io/assets/${contract_address}/${token_id}`);
@@ -58,37 +60,38 @@ export default function NftDetailedViewCard({
         src={image_512}
         onError={handleImageError}
       />
-      <div className="inline-flex space-x-1 items-start justify-end w-full">
-        <div className="flex-1">
+
+      <div className="saveicon inline-flex w-full flex-col justify-end ">
+        <div className="inline-flex text-lg font-bold justify-between leading-relaxed ">
           <Header4>{name}</Header4>
+          <div className="saveicon items-end justify-end ">
+            <Bookmark />
+          </div>
         </div>
       </div>
-      <div className="tracking-wide w-20 truncate">
+      <div className="tracking-wide w-24 ">
         <Subheader2>{original_owner}</Subheader2>
       </div>
       <div className="flex flex-col items-end justify-end w-full">
-        <div className="inline-flex space-x-2.5 items-center justify-end">
-          <div className="flex space-x-1 items-start justify-start">
-            {nftPrice && (
+        {nftPrice && (
+          <div className="inline-flex space-x-2.5 items-center justify-end">
+            <div className="flex space-x-1 items-start justify-start">
               <Image
                 className="w-6 h-6"
                 src="ethereum-1.svg"
                 alt="Crypto Symbol"
               />
-            )}
+              <div className="tracking-wider leading-relaxed">
+                <Header5>
+                  {convertDecimals(+nftPrice?.value ?? 0, contract_decimals, 4)}
+                </Header5>
+              </div>
+            </div>
             <div className="tracking-wider leading-relaxed">
-              <Header5>
-                {nftPrice &&
-                  convertDecimals(+nftPrice?.value ?? 0, contract_decimals, 4)}
-              </Header5>
+              <Header5>{convertBalance(nftPrice?.value_quote ?? 0)}</Header5>
             </div>
           </div>
-          <div className="tracking-wider leading-relaxed">
-            <Header5>
-              {nftPrice && convertBalance(nftPrice?.value_quote ?? 0)}
-            </Header5>
-          </div>
-        </div>
+        )}
       </div>
     </Card>
   );
