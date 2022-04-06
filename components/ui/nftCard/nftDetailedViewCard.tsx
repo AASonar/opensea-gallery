@@ -65,7 +65,7 @@ export default function NftDetailedViewCard({
         <div className="inline-flex text-lg font-bold justify-between leading-relaxed ">
           <Header4>{name}</Header4>
           <div className="saveicon items-end justify-end ">
-            <Bookmark />
+            <Bookmark name={name} />
           </div>
         </div>
       </div>

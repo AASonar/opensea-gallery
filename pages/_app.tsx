@@ -19,6 +19,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Button, Code, Title, MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [chain_id, setChain_id] = useState("1");
@@ -72,24 +73,26 @@ function MyApp({ Component, pageProps }: AppProps) {
         primaryColor: "cyan",
       }}
     >
-      <QueryClientProvider client={queryClient}>
-        <Provider value={supabaseClient}>
-          <ThemeProvider theme={theme}>
-            <AddressContext.Provider
-              value={{
-                chain_id,
-                setChain_id,
-                address,
-                setAddress,
-                isSubmitAddress,
-                setIsSubmitAddress,
-              }}
-            >
-              <Component {...pageProps} />
-            </AddressContext.Provider>
-          </ThemeProvider>
-        </Provider>
-      </QueryClientProvider>
+      <NotificationsProvider>
+        <QueryClientProvider client={queryClient}>
+          <Provider value={supabaseClient}>
+            <ThemeProvider theme={theme}>
+              <AddressContext.Provider
+                value={{
+                  chain_id,
+                  setChain_id,
+                  address,
+                  setAddress,
+                  isSubmitAddress,
+                  setIsSubmitAddress,
+                }}
+              >
+                <Component {...pageProps} />
+              </AddressContext.Provider>
+            </ThemeProvider>
+          </Provider>
+        </QueryClientProvider>
+      </NotificationsProvider>
     </MantineProvider>
   );
 }

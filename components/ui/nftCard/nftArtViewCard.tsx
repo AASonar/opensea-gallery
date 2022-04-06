@@ -53,7 +53,7 @@ export default function NftArtViewCard({
       <div className="nftart item flex-1 h-full bg-gray-900 bg-opacity-75 w-full absolute top-0 left-0 hidden group-hover:block">
         <div className="overlay inline-flex flex-col space-y-2.5 items-end justify-between w-full h-full p-6">
           <div className="saveicon inline-flex items-end justify-end">
-            <Bookmark />
+            <Bookmark name={name} />
           </div>
           <div className="texts flex flex-col space-y-2.5 items-start justify-end w-full">
             <Header4>{name}</Header4>
